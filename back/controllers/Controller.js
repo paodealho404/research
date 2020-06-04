@@ -49,7 +49,18 @@ controllers.createParticipant = (req, res) => {
     return error;
   })
 }
-
+controllers.getTotalParticipants = (req,res) =>{
+  model.sequelize.query('SELECT * FROM participantsInfo;',
+  'type: model.sequelize.queryTypes.SELECT')
+  .then(function(data){
+    // res.status(200).json({ message: 'Busca realizada' });
+    res.json(data);
+    //return res.json;
+  })
+  .catch(error=>{
+    return error;
+  })
+}
 controllers.getClassroom = (req, res) => {
   const teacherId = req.params.teacherId;
   const courseId = req.params.courseId;
@@ -99,7 +110,7 @@ controllers.totalStudents= (req, res) => {
   .catch(error =>{
     return error;
   })
-}
+} 
 
 controllers.getStudentesLevel = (req, res) => {
   const classroomId = req.params.classroomId;

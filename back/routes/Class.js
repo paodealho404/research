@@ -8,6 +8,8 @@ const Controller = require('../controllers/Controller');
 
 //Store participants' info
 routes.post('/createParticipant', Controller.createParticipant);
+//Select current number of participants
+routes.post('/getTotalParticipants', Controller.getTotalParticipants);
 //Select courses linked to a teacher
 routes.get('/get/:id', ClassController.get);
 //Select subjects from a course
