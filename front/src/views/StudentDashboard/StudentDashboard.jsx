@@ -50,7 +50,7 @@ class StudentDashboard extends React.Component {
     let classroomId = localStorage.getItem('classroomId');
     return (
       <>
-        <div className="content">
+        <div className="content" style={{paddingBottom: "15px"}}>
           <Row></Row>
           <Row></Row>
           <Row> <Col><h2>Dashboard Estudante</h2></Col></Row>

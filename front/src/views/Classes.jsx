@@ -56,12 +56,11 @@ class Classes extends React.Component{
       {
           return (
             <>
-            <div className="content">
+            <div className="content" style={{paddingBottom: "15px"}}>
             <Card>  
               <CardHeader>
                 <CardTitle tag="h2">Minhas Disciplinas</CardTitle> 
               </CardHeader>
-              <br/>
               <CardBody>
               <div >
                 <Row sm = "1"> 

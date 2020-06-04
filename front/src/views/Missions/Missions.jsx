@@ -19,7 +19,7 @@ class Missions extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="content">
+                <div className="content" style={{paddingBottom: "15px"}}>
                     <Row>
                         <Col>
                             <h2 style={{ margin: "0.5em 0 0 0" }}>Criar Missão</h2>

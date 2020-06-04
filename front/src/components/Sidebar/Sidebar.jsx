@@ -80,13 +80,13 @@ class Sidebar extends React.Component {
         </div>
         <div className="sidebar-wrapper" ref={this.sidebar}>
         <Nav>
-          <Row className="">
+          {/* <Row className="">
           <Col className=".col-sm-auto .offset-sm-3 text-center ">
           <NavLink to= "/admin/classes">
           <p className= " text-center font-weight-bold " style={{fontFamily: 'Calibri', fontSize: '20px'}}>Minhas Turmas</p>
           </NavLink>
           </Col>
-          </Row>
+          </Row>  */}
         </Nav>
         </div>
       </div>

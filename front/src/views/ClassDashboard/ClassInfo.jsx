@@ -171,9 +171,9 @@ render() {
         </Col>
       </Row>
       <center>
-            <NavLink className="text-dark" to={{pathname:"/admin/missions/"+classroomId+"/"+teacherId+"/"+courseId}} > 
+            <NavLink className="text-dark" to={{/*pathname:"/admin/missions/"+classroomId+"/"+teacherId+"/"+courseId*/}} > 
             <button type="button" className="btn btn-success" >
-              Criar Missão
+              Avaliar o Painel
             </button>
             </NavLink>
       </center>  

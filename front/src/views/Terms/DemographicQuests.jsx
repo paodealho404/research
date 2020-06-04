@@ -150,7 +150,6 @@ class FormContainer extends React.Component {
                   name={'name'}
                   handleChange={this.handleTextArea}/>
             </div> */}
-            <br/><br/>
                 <Checkbox title={'Informe sua idade:'}
                   name={'age'}
                   options={this.state.ageOptions}
