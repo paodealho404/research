@@ -55,7 +55,7 @@ class ClassDashboard extends React.Component {
     render() {
         return (
             <>
-                <div className="content">
+                <div className="content" style={{paddingBottom: "15px"}}>
                 <Row></Row>
                 <Row></Row>
                 <Row> <Col><h2>Painel - Interação com os Recursos de Aprendizagem e Elementos de Jogos</h2></Col></Row> 
