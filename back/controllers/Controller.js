@@ -50,12 +50,10 @@ controllers.createParticipant = (req, res) => {
   })
 }
 controllers.getTotalParticipants = (req,res) =>{
-  model.sequelize.query('SELECT * FROM participantsInfo;',
-  'type: model.sequelize.queryTypes.SELECT')
+  model.sequelize.query('SELECT id FROM participantsInfo;',
+  {type: model.sequelize.QueryTypes.SELECT})
   .then(function(data){
-    // res.status(200).json({ message: 'Busca realizada' });
     res.json(data);
-    //return res.json;
   })
   .catch(error=>{
     return error;
