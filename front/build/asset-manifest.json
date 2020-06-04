@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f1ed9d7c.chunk.css",
+    "main.js": "/static/js/main.52b4de20.chunk.js",
+    "main.js.map": "/static/js/main.52b4de20.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.a975ab2d.js",
+    "runtime-main.js.map": "/static/js/runtime-main.a975ab2d.js.map",
+    "static/css/2.182a82d0.chunk.css": "/static/css/2.182a82d0.chunk.css",
+    "static/js/2.aa72193b.chunk.js": "/static/js/2.aa72193b.chunk.js",
+    "static/js/2.aa72193b.chunk.js.map": "/static/js/2.aa72193b.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.770effdea3df7eaf9a70334eb050c7e9.js": "/precache-manifest.770effdea3df7eaf9a70334eb050c7e9.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.182a82d0.chunk.css.map": "/static/css/2.182a82d0.chunk.css.map",
+    "static/css/main.f1ed9d7c.chunk.css.map": "/static/css/main.f1ed9d7c.chunk.css.map",
+    "static/js/2.aa72193b.chunk.js.LICENSE": "/static/js/2.aa72193b.chunk.js.LICENSE",
+    "static/media/green.png": "/static/media/green.5a86ebc0.png",
+    "static/media/grey.png": "/static/media/grey.b948cc29.png",
+    "static/media/logo_ufal_.png": "/static/media/logo_ufal_.30e1ad89.png",
+    "static/media/modelo_gameficacao.png": "/static/media/modelo_gameficacao.677e3d47.png",
+    "static/media/nees.png": "/static/media/nees.0029635c.png",
+    "static/media/paper-dashboard.scss?v=1.1.0": "/static/media/nucleo-icons.f32ed5ad.eot",
+    "static/media/prof_female.svg": "/static/media/prof_female.fcb072ba.svg",
+    "static/media/professor.svg": "/static/media/professor.4038e72c.svg",
+    "static/media/turma.svg": "/static/media/turma.bda8e9ef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a975ab2d.js",
+    "static/css/2.182a82d0.chunk.css",
+    "static/js/2.aa72193b.chunk.js",
+    "static/css/main.f1ed9d7c.chunk.css",
+    "static/js/main.52b4de20.chunk.js"
+  ]
+}
