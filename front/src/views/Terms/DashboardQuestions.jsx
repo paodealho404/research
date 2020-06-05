@@ -186,8 +186,10 @@ class FinalQuestsContainer extends React.Component {
                     options={this.state.credibility}
                     selectedOptions = {this.state.questionAnswers.q16}
                     value = {this.state.questionAnswers.q16}
-                    handleChange = {this.handleGenericCheckbox}/>
-
+                    handleChange = {this.handleGenericCheckbox}
+                    displaystyle = {{display: 'inline', marginRight: '2.5em'}}
+                    />
+                    
                 <br/>
 
                 <LargeTextArea
