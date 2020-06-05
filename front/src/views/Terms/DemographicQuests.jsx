@@ -137,7 +137,7 @@ class FormContainer extends React.Component {
           <div>
             <Header/>
             <Col>
-            <p className= " text-center font-weight-bold " style={{fontFamily: 'Calibri', fontSize: '25px'}}> Questionário Demográfico </p> <br/> 
+            <p className= " text-center font-weight-bold " style={{fontFamily: 'Calibri', fontSize: '25px', color: '#6c757d'}}> Questionário Demográfico </p> <br/> 
             <Form className="container" >
             <div className="panel panel-default">
               {/* <FormErrors formErrors={this.state.formErrors} /> */}

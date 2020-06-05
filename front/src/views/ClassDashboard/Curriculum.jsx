@@ -10,8 +10,6 @@ import {
 
 import Select from 'react-select';
 import ClassInfo from './ClassInfo';
-//import StudentInfo from '../StudentDashboard/StudentInfo.jsx';
-//import TableMissions from '../Missions/TableMissions';
 
 const baseUrl = process.env.REACT_APP_API_URL || "http://localhost:4000";
 
@@ -48,8 +46,6 @@ class Curriculum extends React.Component {
 
     handleChange = selectedOption => {
         this.setState({ selectedOption });
-
-        // console.log(`Option selected:`, selectedOption);
     };
 
     componentDidMount() {
@@ -88,7 +84,7 @@ class Curriculum extends React.Component {
 
     render() {
         const { selectedOption, curriculum } = this.state;
-        const { classroomId, courseId, teacherId, /* studentId, type, */ renderDate } = this.props;
+        const { classroomId, courseId, teacherId, renderDate } = this.props;
         return (
             <div>
                 <FormGroup>
@@ -116,13 +112,9 @@ class Curriculum extends React.Component {
                     </Col>
                 </FormGroup>
                 {(() => {
-                    if (selectedOption /* && type === "classDashboard" */) {
+                    if (selectedOption) {
                         return <ClassInfo key={selectedOption.value} classroomId={classroomId} courseId={courseId} teacherId={teacherId} curriculumId={selectedOption.value} optionSelected={selectedOption.label} />;
-                    }/* if (selectedOption && type === "studentDashboard") {
-                        return <StudentInfo studentId={studentId} classroomId={classroomId} courseId={courseId} teacherId={teacherId} curriculumId={selectedOption.value} />;
-                    } if (selectedOption && type === "mission") {
-                        return <TableMissions classroomId={classroomId} courseId={courseId} teacherId={teacherId} curriculumId={selectedOption.value} />;
-                    } */
+                    }
                 })()}
             </div>
         )
