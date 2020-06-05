@@ -5,7 +5,7 @@ import { Route, Switch } from "react-router-dom";
 
 import DemoNavbar from "components/Navbars/DemoNavbar.jsx";
 import Sidebar from "components/Sidebar/Sidebar.jsx";
-import Footer from "components/Footer/Footer.jsx";
+//import Footer from "components/Footer/Footer.jsx";
 //import ValidationFooter from "components/Footer/ValidationFooter.jsx";
 
 
@@ -67,10 +67,7 @@ class Dashboard extends React.Component {
               );
             })}
           </Switch>    
-          {/* <Footer/> 
-          <Footer/> */}
         </div> 
-        {/* <ValidationFooter {...this.props} currentState = {this.props.location.state}/> */}
       </div>
     );
   }

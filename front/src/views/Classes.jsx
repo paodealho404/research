@@ -69,7 +69,7 @@ class Classes extends React.Component{
                         <div className="d-flex flex-column" style={{ margin: "1em 0 0 0" }}>
                         <img src= {turma_ic} alt="turma logo" height="100" width="100" className="fas fa-users fa-4x align-self-center"/>
                         <div className="text-center align-self-center" style={{ fontSize: "1.0em" }}> 
-                            <a href="#" onClick={() => this.toggleModal(data.id)} className="text-dark border-info">{data.name}</a>
+                            <button  onClick={() => this.toggleModal(data.id)} className="btn btn-link text-dark border-info">{data.name}</button>
                               {this.state.modalIsOpen &&  <Classroom
                                   modalIsOpen={this.state.modalIsOpen}
                                   toggleModal={this.toggleModal.bind(this)}

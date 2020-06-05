@@ -2,7 +2,7 @@ import React from "react";
 
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import axios from 'axios';
 
 import {
@@ -270,15 +270,7 @@ class LevelChartChild extends React.Component {
                                         <div className="d-flex flex-column" style={{ margin: "1em 0 0 0" }}>
                                             <i className="far fa-user-circle fa-3x align-self-center" />
                                             <div className="align-self-center" style={{ fontSize: "0.85em" }}>
-                                                <Link to={{
-                                                    pathname: "/admin/studentDashboard/" + data.id,
-                                                    state: {
-                                                        classroomId: this.props.classroomId,
-                                                        teacherId: this.props.teacherId,
-                                                        courseId: this.props.courseId
-                                                    }
-                                                }} className="text-dark border-info"> {data.name}
-                                                </Link>
+                                                {data.name}
                                             </div>
                                         </div>
                                     </Col>
@@ -302,15 +294,7 @@ class LevelChartChild extends React.Component {
                                         <div className="d-flex flex-column" style={{ margin: "1em 0 0 0" }}>
                                             <i className="far fa-user-circle fa-3x align-self-center" />
                                             <div className="align-self-center" style={{ fontSize: "0.85em" }}>
-                                                <Link to={{
-                                                    pathname: "/admin/studentDashboard/" + data.id,
-                                                    state: {
-                                                        classroomId: this.props.classroomId,
-                                                        teacherId: this.props.teacherId,
-                                                        courseId: this.props.courseId
-                                                    }
-                                                }} className="text-dark border-info"> {data.name}
-                                                </Link>
+                                                {data.name}
                                             </div>
                                         </div>
                                     </Col>
@@ -334,15 +318,7 @@ class LevelChartChild extends React.Component {
                                         <div className="d-flex flex-column" style={{ margin: "1em 0 0 0" }}>
                                             <i className="far fa-user-circle fa-3x align-self-center" />
                                             <div className="align-self-center" style={{ fontSize: "0.85em" }}>
-                                                <Link to={{
-                                                    pathname: "/admin/studentDashboard/" + data.id,
-                                                    state: {
-                                                        classroomId: this.props.classroomId,
-                                                        teacherId: this.props.teacherId,
-                                                        courseId: this.props.courseId
-                                                    }
-                                                }} className="text-dark border-info"> {data.name}
-                                                </Link>
+                                                {data.name}
                                             </div>
                                         </div>
                                     </Col>
@@ -366,15 +342,7 @@ class LevelChartChild extends React.Component {
                                         <div className="d-flex flex-column" style={{ margin: "1em 0 0 0" }}>
                                             <i className="far fa-user-circle fa-3x align-self-center" />
                                             <div className="align-self-center" style={{ fontSize: "0.85em" }}>
-                                                <Link to={{
-                                                    pathname: "/admin/studentDashboard/" + data.id,
-                                                    state: {
-                                                        classroomId: this.props.classroomId,
-                                                        teacherId: this.props.teacherId,
-                                                        courseId: this.props.courseId
-                                                    }
-                                                }} className="text-dark border-info"> {data.name}
-                                                </Link>
+                                                {data.name}
                                             </div>
                                         </div>
                                     </Col>
@@ -398,15 +366,7 @@ class LevelChartChild extends React.Component {
                                         <div className="d-flex flex-column" style={{ margin: "1em 0 0 0" }}>
                                             <i className="far fa-user-circle fa-3x align-self-center" />
                                             <div className="align-self-center" style={{ fontSize: "0.85em" }}>
-                                                <Link to={{
-                                                    pathname: "/admin/studentDashboard/" + data.id,
-                                                    state: {
-                                                        classroomId: this.props.classroomId,
-                                                        teacherId: this.props.teacherId,
-                                                        courseId: this.props.courseId
-                                                    }
-                                                }} className="text-dark border-info"> {data.name}
-                                                </Link>
+                                                {data.name}
                                             </div>
                                         </div>
                                     </Col>

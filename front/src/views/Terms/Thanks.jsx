@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Header from "./Header";
 
-const baseUrl =  process.env.REACT_APP_API_URL+"/course/createParticipant/" || "http://localhost:4000"+"/course/createParticipant/";
+    const baseUrl =  process.env.REACT_APP_API_URL+"/course/createParticipant/" || "http://localhost:4000/course/createParticipant/";
 
 class Thanks extends React.Component {
     constructor(props)
@@ -41,6 +41,7 @@ class Thanks extends React.Component {
             openQuestion2: '',
         }
     }
+
     componentDidMount()
     {
         let user = JSON.parse(localStorage.getItem('finalpackage'));

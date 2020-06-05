@@ -12,13 +12,13 @@ import {
 
 const baseUrl = process.env.REACT_APP_API_URL || "http://localhost:4000";
 
-class AverageClassInteraction extends React.Component {
+class AverageStudentsPoints extends React.Component {
 
     constructor(props) {
         super(props);
         this.cancelTokenSource = new axios.CancelToken.source();
         this.state = {
-            Date: ''
+
         }
     }
 
@@ -27,19 +27,12 @@ class AverageClassInteraction extends React.Component {
         const curriculumId = this.props.curriculumId;
         const classroomId = this.props.classroomId;
 
-        const url = baseUrl + "/course/getExpectedDate/" + curriculumId + "/" + courseId + "/" + classroomId
+        const url = baseUrl + "/course/getExpectedDate/" + curriculumId + "/" + courseId + "/" + classroomId;
 
         axios.get(url, { cancelToken: this.cancelTokenSource.token })
             .then(res => {
                 if (res.data) {
-                    const Date_Values = res.data[0];
 
-                    let startDate = new Date(Date_Values.startDate.replace(/-/g, '/'));
-                    let endDate = new Date(Date_Values.endDate.replace(/-/g, '/'));
-
-                    this.setState({
-                        Date: startDate.getDate() + "/" + (startDate.getMonth() + 1) + " a " + endDate.getDate() + "/" + (endDate.getMonth() + 1)
-                    });
                 } else {
                     alert("Error web service");
                 }
@@ -71,9 +64,9 @@ class AverageClassInteraction extends React.Component {
                         </Col>
                         <Col md="9" xs="5">
                             <div className="numbers">
-                                <p className="card-category">Período previsto para o Domínio desse assunto</p>
+                                <p className="card-category">Média aritmética da pontuação dos Alunos da Turma</p>
                                 <div style={{ fontSize: 45 }}>
-                                    <CardTitle tag="p">{Date}</CardTitle>
+                                    <CardTitle tag="p">Média Aqui</CardTitle>
                                 </div>
                                 <p />
                             </div>
@@ -87,4 +80,4 @@ class AverageClassInteraction extends React.Component {
     }
 }
 
-export default AverageClassInteraction;
+export default AverageStudentsPoints;
