@@ -27,7 +27,7 @@ import { MissionChart, MissionChartChild } from "./Chart/MissionChart/MissionCha
 
 class ClassInfo extends React.Component{ 
 render() {
-  const { courseId, classroomId, curriculumId, teacherId, optionSelected } = this.props;
+  const { courseId, classroomId, curriculumId, optionSelected } = this.props;
   return(
     <div>
       <Row>

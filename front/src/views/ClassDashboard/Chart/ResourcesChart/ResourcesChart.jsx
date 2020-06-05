@@ -6,7 +6,7 @@ import HighchartsReact from 'highcharts-react-official';
 import { UncontrolledTooltip } from 'reactstrap';
 
 import axios from 'axios';
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
 const baseUrl = process.env.REACT_APP_API_URL || "http://localhost:4000";
 
