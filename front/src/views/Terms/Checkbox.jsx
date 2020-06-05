@@ -12,8 +12,8 @@ const CheckBox = (props) => {
     <div className="radio">
       {props.options.map(option => {
         return (
-        <div key={option}>
-          <label style={{fontSize: '18px',}} className="checkbox-inline">
+        <div style={props.displaystyle} key={option}>
+          <label style={{fontSize: '18px'}} className="checkbox-inline">
             <input className = "text-secondary"
               id={props.option}
               name={props.name}
