@@ -11,7 +11,7 @@ import Checkbox from "./Checkbox";
 import Header from "./Header";
 import LargeTextArea from "./LargeTextArea";
 
-class FinalQuestsContainer extends React.Component {
+class DashboardQuestions extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -196,7 +196,7 @@ class FinalQuestsContainer extends React.Component {
     validateForm()
     {
       this.setState({formValid: (this.state.openQuestion1Valid && this.state.openQuestion2Valid && this.state.q1Valid && this.state.q2Valid && this.state.q3Valid && this.state.q4Valid && this.state.q5Valid && this.state.q6Valid && this.state.q7Valid && this.state.q8Valid
-        && this.state.q9Valid && this.state.q10Valid && this.state.q11Valid && this.state.q12Valid && this.state.q13Valid && this.state.q14Valid && this.state.q15Valid && this.state.q16Valid && this.state.q17Valid && this.state.q18Valid && this.state.q19Valid && this.state.q20Valid && this.state.q21Valid && this.state.q22Valid && this.state.q23Valid && this.state.q24Valid)});
+        && this.state.q9Valid && this.state.q10Valid && this.state.q11Valid && this.state.q12Valid && this.state.q13Valid && this.state.q14Valid && this.state.q15Valid && this.state.q16Valid)});
     }
 
     render()
@@ -381,4 +381,4 @@ class FinalQuestsContainer extends React.Component {
         )      
     }
 }
-export default FinalQuestsContainer;
+export default DashboardQuestions;
