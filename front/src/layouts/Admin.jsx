@@ -67,10 +67,7 @@ class Dashboard extends React.Component {
               );
             })}
           </Switch>    
-          {/* <Footer/> 
-          <Footer/> */}
         </div> 
-        {/* <ValidationFooter {...this.props} currentState = {this.props.location.state}/> */}
       </div>
     );
   }

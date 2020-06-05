@@ -204,7 +204,7 @@ class DashboardQuestions extends React.Component {
         return(
             <div>
             <Header/>
-            <p className= " text-center font-weight-bold " style={{fontFamily: 'Calibri', fontSize: '25px'}}> Responda as seguintes questões sobre a sua experiência com o painel apresentado: </p> <br/> 
+            <p className= " text-center font-weight-bold " style={{fontFamily: 'Calibri', fontSize: '25px', color: '#6c757d'}}> Responda as seguintes questões sobre a sua experiência com o painel apresentado: </p> <br/> 
             <Form className="container" >
                 <Checkbox title={'O painel apresentado anteriormente pode me ajudar a mudar as estratégias de gerenciamento de recursos para a turma.'} 
                     name={'q1'}

@@ -6,7 +6,6 @@ import {
 } from "reactstrap";
 
 import Curriculum from "./Curriculum.jsx";
-//import Students from "../StudentDashboard/Students.jsx";
 
 class ClassDashboard extends React.Component {
     constructor(props) {
@@ -14,36 +13,9 @@ class ClassDashboard extends React.Component {
         this.state = {
             classroomId: "",
             teacherId: "",
-            courseId: "",
-            /* isSelected: false,
-            typeDashboard: "classDashboard",
-            colorB1: "btn-link text-dark font-weight-bold border-bottom border-dark",
-            colorB2: "btn-link text-muted" */
+            courseId: ""
         }
-        /* this.handleB1 = this.handleB1.bind(this);
-        this.handleB2 = this.handleB2.bind(this); */
     }
-
-    /* handleB1(event) {
-
-        this.setState({
-            colorB1: "btn-link text-dark font-weight-bold border-bottom border-dark",
-            colorB2: " btn-link text-muted",
-            isSelected: false,
-            
-        });
-
-    }
-    handleB2(event) {
-        if (this.state.isSelected === false) {
-            this.setState({
-                colorB2: "btn-link text-dark font-weight-bold border-bottom border-dark",
-                colorB1: "btn-link text-muted",
-                isSelected: true,
-            });
-        }
-
-    } */
 
     componentDidMount()
     {
@@ -61,14 +33,12 @@ class ClassDashboard extends React.Component {
                 <Row> <Col><h2>Painel - Interação com os Recursos de Aprendizagem e Elementos de Jogos</h2></Col></Row> 
                 <Row className = "border-bottom">
                     <Col>
-                        <button /*className = {this.state.colorB1}*/ className="btn-link text-dark font-weight-bold border-bottom border-dark">Turma</button>
-                        {/* <button className = {this.state.colorB2} onClick= {() => this.handleB2() }>Estudantes</button> */}
+                        <button className="btn-link text-dark font-weight-bold border-bottom border-dark">Turma</button>
                     </Col>
                 </Row>
                 <Row></Row>
                 <br/>
                 <div>
-                    {/*this.state.isSelected ? (<Students teacherId={this.props.match.params.teacherId} classroomId = {this.props.match.params.id} courseId = {this.props.match.params.courseId}/>) : (<Curriculum teacherId={this.props.match.params.teacherId} classroomId = {this.props.match.params.id} courseId = {this.props.match.params.courseId} type={this.state.typeDashboard} renderDate={true}/>)*/}
                     <Curriculum teacherId={this.props.match.params.teacherId} classroomId = {this.props.match.params.id} courseId = {this.props.match.params.courseId} renderDate={true}/>
                 </div>
                 <br/>
