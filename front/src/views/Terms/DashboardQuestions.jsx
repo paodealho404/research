@@ -63,6 +63,10 @@ class DashboardQuestions extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     }  
 
+    componentDidMount() {
+        console.log(this.props.location.state.DashboardID);
+    }
+
     validateField(fieldName, value) {
         let fieldValidationErrors = this.state.formErrors;
   

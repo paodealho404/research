@@ -62,7 +62,7 @@ class StudentsRegistered extends React.Component {
                 </Col>
                 <Col md="8" xs="5">
                   <div className="numbers">
-                    <p className="card-category">Número de alunos matriculados nesta disciplina </p>
+                    <p className="card-category">Número de alunos matriculados nesta disciplina</p>
                     <p> </p>
                     <div style={{ fontSize: 45 }}>
                         <CardTitle tag="p">{this.state.totalStudents}</CardTitle>

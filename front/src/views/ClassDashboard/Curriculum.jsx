@@ -9,7 +9,9 @@ import {
 } from "reactstrap";
 
 import Select from 'react-select';
-import ClassInfo from './ClassInfo';
+import ClassInfo_1 from './Dashboard_1/ClassInfo';
+import ClassInfo_2 from './Dashboard_2/ClassInfo';
+import ClassInfo_3 from './Dashboard_3/ClassInfo';
 
 const baseUrl = process.env.REACT_APP_API_URL || "http://localhost:4000";
 
@@ -40,7 +42,8 @@ class Curriculum extends React.Component {
         this.state = {
             curriculum: [],
             selectedOption: null,
-            date: ''
+            date: '',
+            dashboard: 0
         }
     }
 
@@ -57,6 +60,7 @@ class Curriculum extends React.Component {
         axios.get(url).then(res => {
             if (res.data) {
                 const data = res.data;
+                const url = document.URL;
 
                 //var date = new Date().getDate();
                 //var month = new Date().getMonth() + 1;
@@ -84,7 +88,7 @@ class Curriculum extends React.Component {
 
     render() {
         const { selectedOption, curriculum } = this.state;
-        const { classroomId, courseId, teacherId, renderDate } = this.props;
+        const { classroomId, courseId, teacherId, renderDate, DashboardID } = this.props;
         return (
             <div>
                 <FormGroup>
@@ -113,7 +117,13 @@ class Curriculum extends React.Component {
                 </FormGroup>
                 {(() => {
                     if (selectedOption) {
-                        return <ClassInfo key={selectedOption.value} classroomId={classroomId} courseId={courseId} teacherId={teacherId} curriculumId={selectedOption.value} optionSelected={selectedOption.label} />;
+                        if (DashboardID === 1) {
+                            return <ClassInfo_1 key={selectedOption.value} classroomId={classroomId} courseId={courseId} teacherId={teacherId} curriculumId={selectedOption.value} optionSelected={selectedOption.label} />;
+                        } else if (DashboardID === 2) {
+                            return <ClassInfo_2 key={selectedOption.value} classroomId={classroomId} courseId={courseId} teacherId={teacherId} curriculumId={selectedOption.value} optionSelected={selectedOption.label} />;
+                        } else if (DashboardID === 3) {
+                            return <ClassInfo_3 key={selectedOption.value} classroomId={classroomId} courseId={courseId} teacherId={teacherId} curriculumId={selectedOption.value} optionSelected={selectedOption.label} />;
+                        }
                     }
                 })()}
             </div>

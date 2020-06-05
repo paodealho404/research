@@ -55,7 +55,7 @@ class Classroom extends React.Component{
                     <Card key={data.id}  style={{width: '10rem'}} > 
                     <CardBody>
                       <CardTitle > 
-                        <Link to={{pathname:"/admin/classDashboard/"+data.id+"/"+this.props.teacherId+"/"+this.props.courseId}} >{data.name}</Link> 
+                        <Link to={{pathname:"/admin/classDashboard_1/"+data.id+"/"+this.props.teacherId+"/"+this.props.courseId}} >{data.name}</Link> 
                       </CardTitle>                      
                     </CardBody>                                     
                     </Card>
