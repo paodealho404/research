@@ -14,7 +14,7 @@ import Classes from "views/Classes.jsx";
 import ClassDashboard from "views/ClassDashboard/ClassDashboard.jsx";
 import StarterTerm from "views/Terms/StarterTerm.jsx";
 import DemographicQuests from "views/Terms/DemographicQuests.jsx";
-import FinalQuests from 'views/Terms/FinalQuests.jsx';
+//import FinalQuests from 'views/Terms/FinalQuests.jsx';
 import Thanks from 'views/Terms/Thanks.jsx';
 import ProjectDescription from 'views/Terms/ProjectDescription';
 import ProjectTutorial from 'views/Terms/ProjectTutorial';
