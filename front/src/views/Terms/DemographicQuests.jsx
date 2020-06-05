@@ -11,29 +11,28 @@ import {
 import Checkbox from "./Checkbox";
 import TextArea from "./TextArea";
 import Header from "./Header";
-
+import axios from 'axios';
+const baseUrl =  process.env.REACT_APP_API_URL || "http://localhost:4000/course";
 class FormContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          newUser: {
-            //name:'',
-            age: '',
+          participant: {
             gender: '',
-            educationalLevel: '',
-            studyDomain: '',
+            age: '',
+            educational_level: '',
+            state: ''
           },
           redirect: false,
-          //nameValid:false,
-          ageValid:false,
-          genderValid:false,
-          educationalLevelValid:false,
-          studyDomainValid:false,
-          formErrors: {name: '', studyDomain: '', age:'', educationalLevel:'', gender: ''},
+          age_valid: false,
+          gender_valid:false,
+          educational_level_valid :false,
+          state_valid:false,
+          formErrors: {state: '', age:'', educational_level:'', gender: ''},
           formValid: false,
           ageOptions: ['Inferior a 18 anos', '18 a 25 anos', '26 a 40 anos', '41 a 65 anos', 'Superior a 65 anos'],
           genderOptions: ['Feminino', 'Masculino', 'Outros'],
-          educationalLevelOptions: ['Ensino Médio', 'Ensino Técnico', 'Ensino Superior', 'Mestrado', 'Doutorado'],
+          educational_levelOptions: ['Ensino Médio', 'Ensino Técnico', 'Ensino Superior', 'Mestrado', 'Doutorado'],
         }
         this.handleTextArea = this.handleTextArea.bind(this);
         this.handleCheckBoxAge = this.handleCheckBoxAge.bind(this);
@@ -43,34 +42,34 @@ class FormContainer extends React.Component {
 
     handleCheckBoxAge(e) {
         const value = e.target.value;
-        this.setState( prevState => ({ newUser : 
-            {...prevState.newUser, age: value
+        this.setState( prevState => ({ participant : 
+            {...prevState.participant, age: value
             }
           }), ()=>{ this.validateField('age', value) })
     }
 
     handleCheckBoxGender(e) {
         const value = e.target.value;
-        this.setState( prevState => ({ newUser : 
-            {...prevState.newUser, gender: value
+        this.setState( prevState => ({ participant : 
+            {...prevState.participant, gender: value
             }
           }), ()=>{ this.validateField('gender', value) })
     }
 
     handleCheckBoxEducacationalLevel(e) {
         const value = e.target.value;
-        this.setState( prevState => ({ newUser : 
-            {...prevState.newUser, educationalLevel: value
+        this.setState( prevState => ({ participant : 
+            {...prevState.participant, educational_level: value
             }
-          }), ()=>{this.validateField('educationalLevel', value) })
+          }), ()=>{this.validateField('educational_level', value) })
     }
 
     handleTextArea(e) {
       let name = e.target.name;
       let value = e.target.value;
       this.setState(prevState => ({
-        newUser: {
-          ...prevState.newUser, [name]: value
+        participant: {
+          ...prevState.participant, [name]: value
         }
         }), ()=>{ this.validateField(name, value) });
     }
@@ -78,48 +77,43 @@ class FormContainer extends React.Component {
     validateField(fieldName, value) {
       let fieldValidationErrors = this.state.formErrors;
       //let nameValid = this.state.nameValid;
-      let studyDomainValid = this.state.studyDomainValid;
-      let ageValid = this.state.ageValid;
-      let genderValid = this.state.genderValid;
-      let educationalLevelValid = this.state.educationalLevelValid;
-
+      let age_valid = this.state.age_valid;
+      let gender_valid = this.state.gender_valid;
+      let educational_level_valid = this.state.educational_level_valid ;
+      let state_valid = this.state.state_valid;
       switch(fieldName) {
-        // case 'name':
-        //   nameValid = value.length > 0;
-        //   fieldValidationErrors.name = nameValid ? '' : 'notValid';
-        //   break;
-        case 'studyDomain':
-          studyDomainValid = value.length > 0;
-          fieldValidationErrors.studyDomain = studyDomainValid ? '': 'notValid';
-          break;
         case 'age':
-          ageValid = value.length > 0;
-          fieldValidationErrors.age = ageValid ? '': 'notValid';
+          age_valid = value.length > 0;
+          fieldValidationErrors.age = age_valid ? '': 'notValid';
           break;
         case 'gender':
-          genderValid = value.length > 0;
-          fieldValidationErrors.gender = genderValid ? '': 'notValid';
+          gender_valid = value.length > 0;
+          fieldValidationErrors.gender = gender_valid ? '': 'notValid';
           break;
-        case 'educationalLevel':
-          educationalLevelValid = value.length > 0;
-          fieldValidationErrors.educationalLevel = educationalLevelValid ? '': 'notValid';
+        case 'educational_level':
+          educational_level_valid = value.length > 0;
+          fieldValidationErrors.educational_level = educational_level_valid  ? '': 'notValid';
+          break;
+        case 'state':
+          state_valid = value.length > 0;
+          fieldValidationErrors.state_valid = state_valid ? '':'notValid';
           break;
         default:
           break;
       }
       this.setState({formErrors: fieldValidationErrors,
                       //nameValid: nameValid,
-                      studyDomainValid: studyDomainValid,
-                      ageValid: ageValid,
-                      educationalLevelValid: educationalLevelValid,
-                      genderValid: genderValid
+                      age_valid: age_valid,
+                      educational_level_valid : educational_level_valid ,
+                      state_valid: state_valid,
+                      gender_valid: gender_valid
                     }, this.validateForm);
     }
 
     validateForm() {
       this.setState({formValid: 
         //this.state.nameValid && 
-        this.state.studyDomainValid && this.state.educationalLevelValid && this.state.ageValid && this.state.genderValid});
+        this.state.educational_level_valid && this.state.age_valid && this.state.gender_valid && this.state.state_valid})
     }
 
     errorClass(error) {
@@ -127,9 +121,16 @@ class FormContainer extends React.Component {
     }
     redirect()
     {
-      localStorage.setItem('user', JSON.stringify(this.state.newUser));
-      // localStorage.setItem('teacherName', this.state.newUser.name);
-      // localStorage.setItem('teacherGender', this.state.newUser.gender);
+      localStorage.setItem('participant', JSON.stringify(this.state.participant));
+      let participant = JSON.parse(localStorage.getItem('participant'));
+      console.log(participant);
+      axios.post(baseUrl+'/createParticipant', participant)
+      .then(res=>{
+        console.log(res);
+      })
+      .catch(error=>{
+        return error;
+      })
       this.setState({redirect: true});
     }
     render(){
@@ -146,42 +147,43 @@ class FormContainer extends React.Component {
                 <TextArea
                   title={'Informe seu nome:'}
                   rows={1}
-                  value={this.state.newUser.name}
+                  value={this.state.participant.name}
                   name={'name'}
                   handleChange={this.handleTextArea}/>
             </div> */}
                 <Checkbox title={'Informe sua idade:'}
                   name={'age'}
                   options={this.state.ageOptions}
-                  selectedOptions = {this.state.newUser.age}
-                  value = {this.state.newUser.age}
+                  selectedOptions = {this.state.participant.age}
+                  value = {this.state.participant.age}
                   handleChange={this.handleCheckBoxAge}/>  
                   <br/><br/>
                 <Checkbox title={'Selecione seu gênero:'}
                   name={'gender'}
                   options={this.state.genderOptions}
-                  selectedOptions = {this.state.newUser.gender}
-                  value = {this.state.newUser.gender}
+                  selectedOptions = {this.state.participant.gender}
+                  value = {this.state.participant.gender}
                   handleChange={this.handleCheckBoxGender}/>  
                   <br/><br/>
                 <TextArea 
                   title={'Informe qual nível educacional você leciona:'}
                   rows={1}
-                  name={'educationalLevel'}
-                  // value={this.state.educationalLevelOptions}
-                  // selectedOptions = {this.state.newUser.educationalLevel}
-                  value = {this.state.newUser.educationalLevel}
+                  name={'educational_level'}
+                  // value={this.state.educational_levelOptions}
+                  // selectedOptions = {this.state.participant.educational_level}
+                  value = {this.state.participant.educational_level}
                   handleChange={this.handleCheckBoxEducacationalLevel}/> 
                   <br/><br/>
-              <div className={`form-group ${this.errorClass(this.state.formErrors.studyDomain)}`}>
-                <TextArea
-                  title={'Informe qual área de domínio você leciona:'}
-                  rows={1}
-                  value={this.state.newUser.studyDomain}
-                  name={'studyDomain'}
-                  handleChange={this.handleTextArea}/>
-              </div>
               <br/><br/>
+              <TextArea 
+                  title={'Informe seu Estado: '}
+                  rows={1}
+                  name={'state'}
+                  // value={this.state.educational_levelOptions}
+                  // selectedOptions = {this.state.participant.educational_level}
+                  value = {this.state.participant.state}
+                  handleChange={this.handleTextArea}/> 
+                  <br/><br/>
                 <Col sm={{ span: 10, offset: 5 }}>
                     <Button color="#C0B283" disabled={!this.state.formValid} onClick={() => this.redirect()}> 
                          <span className="text-white"> Próxima Etapa </span>       

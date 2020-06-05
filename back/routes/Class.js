@@ -9,11 +9,11 @@ const Controller = require('../controllers/Controller');
 //Store participants' info
 routes.post('/createParticipant', Controller.createParticipant);
 //Select current number of participants
-routes.get('/getTotalParticipants', Controller.getTotalParticipants);
+routes.get('/getRecentParticipant', Controller.getRecentParticipant);
 //Store participants for a survey
 routes.post('/createSurvey', Controller.createSurvey);
 //Select current number of surveys
-routes.post('/getSurveys', Controller.getSurveys);
+routes.get('/getSurveys', Controller.getSurveys);
 //Select courses linked to a teacher
 routes.get('/get/:id', ClassController.get);
 //Select subjects from a course

@@ -7,15 +7,17 @@ const participants = models.participant;
 const survey = models.survey;
 
 controllers.createParticipant = (req, res) => {
-  const {gender,age,educational_level,state} = req.body;
+  const gender = req.body.gender.toString(), age = req.body.age.toString(), 
+  educational_level = req.body.educational_level.toString(),  state = req.body.state.toString();
+  console.log(gender,age,educational_level,state);
   participants.create({
-    age:age,
     gender:gender,
+    age:age,
     educational_level:educational_level,
     state:state
   })
   .then(function(data){
-    res.status(200).json({ message: 'Dados adicionados com Sucesso' });
+    res.status(200).json({ message: 'Successfully added a new participant' });
     return data;
   })
   .catch(error => {
@@ -40,27 +42,25 @@ controllers.createSurvey = (req,res) =>{
     survey_type:survey_type
   })
   .then((data)=>{
-    res.status(200).json({ message: 'Dados adicionados com Sucesso' });
+    res.status(200).json({ message: 'Successfully added a new survey' });
     return data;
   })
   .catch(error=>{
     return error;
   })
 }
-controllers.getTotalParticipants = (req,res) =>{
-  model.sequelize.query('SELECT * FROM participant;',
+controllers.getRecentParticipant = (req,res) =>{
+  model.sequelize.query('SELECT LAST_INSERT_ID();',
   {type: model.sequelize.QueryTypes.SELECT})
   .then(function(data){
-    res.send('Done');
     res.json(data);
-    console.log(res);
   })
   .catch(error=>{
     return error;
   })
 }
 controllers.getSurveys = (req,res) =>{
-  model.sequelize.query('SELECT * FROM survey;',
+  model.sequelize.query('SELECT COUNT(*) AS total_surveys FROM survey;',
   {type: model.sequelize.QueryTypes.SELECT})
   .then(data=>{
     res.json(data);

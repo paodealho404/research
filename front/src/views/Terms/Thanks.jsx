@@ -12,7 +12,6 @@ class Thanks extends React.Component {
             name:'',
             age:'',
             educationalLevel:'',
-            studyDomain:'',
             gender:'',
             q1: '',
             q2: '',
