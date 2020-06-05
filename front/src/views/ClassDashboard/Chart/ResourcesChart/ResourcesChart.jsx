@@ -245,18 +245,7 @@ const TableBody = props => {
     const columns = (student, students_interaction, resource, status_problems) => resource.map((resource, index) => {
         if (index === 0) {
             // Render student name
-            return (<td key={"tb_b_c_resourceschart-" + resource.resource_id}><i className="far fa-user-circle fa-2x" style={{ verticalAlign: "middle", margin: "0 0.5em 0 0" }} />
-                    <Link to={{
-                                                    pathname: "/admin/studentDashboard/" + student.id,
-                                                    state: {
-                                                        classroomId: props.classroomId,
-                                                        teacherId: props.teacherId,
-                                                        courseId: props.courseId
-                                                    }
-                                                }} className="text-dark border-info">
-                                                    {student.name}
-                    </Link>
-                    </td>);
+            return (<td key={"tb_b_c_resourceschart-" + resource.resource_id}><i className="far fa-user-circle fa-2x" style={{ verticalAlign: "middle", margin: "0 0.5em 0 0" }}/>{student.name}</td>);
         } else {
             // Render if interacted with the resources
             // check if the student interacted

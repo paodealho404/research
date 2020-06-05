@@ -172,7 +172,7 @@ render() {
       </Row>
       <center>
             <NavLink className="text-dark" to={{pathname:"/dashboardQuestions"}} > 
-            <button type="button" style={{marginBottom: '0'}} className="btn btn-success" >
+            <button type="button" style={{marginBottom: '0'}} className="btn btn-primary">
               Avaliar o Painel
             </button>
             </NavLink>

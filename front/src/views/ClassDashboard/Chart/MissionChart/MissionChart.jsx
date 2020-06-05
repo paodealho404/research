@@ -367,15 +367,7 @@ class MissionChartChild extends React.Component {
                                                         <div className="d-flex flex-column" style={{ margin: "1em 0 0 0" }}>
                                                             <i className="far fa-user-circle fa-3x align-self-center"/>
                                                             <div className="align-self-center" style={{ fontSize: "0.85em" }}>
-                                                                <Link to={{
-                                                                    pathname: "/admin/studentDashboard/" + data_student.userId,
-                                                                    state: {
-                                                                        classroomId: this.props.classroomId,
-                                                                        teacherId: this.props.teacherId,
-                                                                        courseId: this.props.courseId
-                                                                    }
-                                                                }} className="text-dark border-info"> {data_student.userName}
-                                                                </Link>
+                                                                {data_student.userName}
                                                             </div>
                                                         </div>
                                                     </Col>
@@ -398,15 +390,7 @@ class MissionChartChild extends React.Component {
                                                         <div className="d-flex flex-column" style={{ margin: "1em 0 0 0" }}>
                                                             <i className="far fa-user-circle fa-3x align-self-center" />
                                                             <div className="align-self-center" style={{ fontSize: "0.85em" }}>
-                                                                <Link to={{
-                                                                    pathname: "/admin/studentDashboard/" + data_student.userId,
-                                                                    state: {
-                                                                        classroomId: this.props.classroomId,
-                                                                        teacherId: this.props.teacherId,
-                                                                        courseId: this.props.courseId
-                                                                    }
-                                                                }} className="text-dark border-info"> {data_student.userName}
-                                                                </Link>
+                                                                {data_student.userName}
                                                             </div>
                                                         </div>
                                                     </Col>
@@ -429,15 +413,7 @@ class MissionChartChild extends React.Component {
                                                         <div className="d-flex flex-column" style={{ margin: "1em 0 0 0" }}>
                                                             <i className="far fa-user-circle fa-3x align-self-center" />
                                                             <div className="align-self-center" style={{ fontSize: "0.85em" }}>
-                                                                <Link to={{
-                                                                    pathname: "/admin/studentDashboard/" + data_student.userId,
-                                                                    state: {
-                                                                        classroomId: this.props.classroomId,
-                                                                        teacherId: this.props.teacherId,
-                                                                        courseId: this.props.courseId
-                                                                    }
-                                                                }} className="text-dark border-info"> {data_student.userName}
-                                                                </Link>
+                                                                {data_student.userName}
                                                             </div>
                                                         </div>
                                                     </Col>

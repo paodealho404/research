@@ -61,7 +61,7 @@ class ClassDashboard extends React.Component {
                 <Row> <Col><h2>Painel - Interação com os Recursos de Aprendizagem e Elementos de Jogos</h2></Col></Row> 
                 <Row className = "border-bottom">
                     <Col>
-                        <button /*className = {this.state.colorB1}*/ className="btn-link text-dark font-weight-bold border-bottom border-dark" onClick= {() => this.handleB1() }>Turma</button>
+                        <button /*className = {this.state.colorB1}*/ className="btn-link text-dark font-weight-bold border-bottom border-dark">Turma</button>
                         {/* <button className = {this.state.colorB2} onClick= {() => this.handleB2() }>Estudantes</button> */}
                     </Col>
                 </Row>
