@@ -10,6 +10,10 @@ const Controller = require('../controllers/Controller');
 routes.post('/createParticipant', Controller.createParticipant);
 //Select current number of participants
 routes.get('/getTotalParticipants', Controller.getTotalParticipants);
+//Store participants for a survey
+routes.post('/createSurvey', Controller.createSurvey);
+//Select current number of surveys
+routes.post('/getSurveys', Controller.getSurveys);
 //Select courses linked to a teacher
 routes.get('/get/:id', ClassController.get);
 //Select subjects from a course

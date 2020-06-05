@@ -3,56 +3,66 @@ const controllers = {}
 'use strict';
 const model = require('../models/index');
 const models = require('../models');
-const participantsInfo = models.participantsInfo;
+const participants = models.participant;
+const survey = models.survey;
 
 controllers.createParticipant = (req, res) => {
-  const { name, age, gender, educationalLevel, studyDomain, Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10, Q11, Q12, Q13, Q14, Q15, Q16, openQuestion1, openQuestion2, Q17, Q18, Q19, Q20, Q21, Q22, Q23, Q24 } = req.body;
-  participantsInfo.create({
-    name:name,
+  const {gender,age,educational_level,state} = req.body;
+  participants.create({
     age:age,
     gender:gender,
-    educationalLevel:educationalLevel,
-    studyDomain:studyDomain,
-    Q1:Q1, 
-    Q2:Q2, 
-    Q3:Q3, 
-    Q4:Q4, 
-    Q5:Q5, 
-    Q6:Q6, 
-    Q7:Q7, 
-    Q8:Q8, 
-    Q9:Q9, 
-    Q10:Q10, 
-    Q11:Q11, 
-    Q12:Q12, 
-    Q13:Q13, 
-    Q14:Q14, 
-    Q15:Q15, 
-    Q16:Q16,
-    openQuestion1:openQuestion1,
-    openQuestion2:openQuestion2,
-    Q17:Q17,
-    Q18:Q18,
-    Q19:Q19,
-    Q20:Q20,
-    Q21:Q21,
-    Q22:Q22,
-    Q23:Q23, 
-    Q24: Q24
+    educational_level:educational_level,
+    state:state
   })
   .then(function(data){
     res.status(200).json({ message: 'Dados adicionados com Sucesso' });
     return data;
   })
-  .catch(error =>{
-    // console.log("error "+error)
+  .catch(error => {
+    return error;
+  })
+}
+controllers.createSurvey = (req,res) =>{
+  const {participant_id,q1,q2,q3,q4,q5,q6,q7,q8,q9,openQuestion1,openQuestion2,survey_type} = req.body;
+  survey.create({
+    participant_id:participant_id,
+    q1:q1,
+    q2:q2,
+    q3:q3,
+    q4:q4,
+    q5:q5,
+    q6:q6,
+    q7:q7,
+    q8:q8,
+    q9:q9,
+    openQuestion1:openQuestion1,
+    openQuestion2:openQuestion2,
+    survey_type:survey_type
+  })
+  .then((data)=>{
+    res.status(200).json({ message: 'Dados adicionados com Sucesso' });
+    return data;
+  })
+  .catch(error=>{
     return error;
   })
 }
 controllers.getTotalParticipants = (req,res) =>{
-  model.sequelize.query('SELECT id FROM participantsInfo;',
+  model.sequelize.query('SELECT * FROM participant;',
   {type: model.sequelize.QueryTypes.SELECT})
   .then(function(data){
+    res.send('Done');
+    res.json(data);
+    console.log(res);
+  })
+  .catch(error=>{
+    return error;
+  })
+}
+controllers.getSurveys = (req,res) =>{
+  model.sequelize.query('SELECT * FROM survey;',
+  {type: model.sequelize.QueryTypes.SELECT})
+  .then(data=>{
     res.json(data);
   })
   .catch(error=>{

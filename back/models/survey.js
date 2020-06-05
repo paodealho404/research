@@ -1,7 +1,11 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const survey = sequelize.define('participant', {
-    id: DataTypes.INTEGER,
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     participant_id: DataTypes.INTEGER,
     q1: DataTypes.TEXT,
     q2: DataTypes.TEXT,
@@ -15,10 +19,13 @@ module.exports = (sequelize, DataTypes) => {
     openQuestion1: DataTypes.TEXT,
     openQuestion2: DataTypes.TEXT,
     survey_type: DataTypes.INTEGER
-  }, {});
+  }, {
+    freezeTableName: true,
+    timestamps: false
+  });
   survey.associate = function(models) {
     // associations can be defined here
     survey.belongsTo(models.participant, {foreignKey: 'participant_id'});
   };
-  return participant;
+  return survey;
 };

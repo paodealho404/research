@@ -1,12 +1,19 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const participant = sequelize.define('participant', {
-    id: DataTypes.INTEGER,
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     gender: DataTypes.STRING,
     age: DataTypes.STRING,
     educational_level: DataTypes.STRING,
     state: DataTypes.STRING
-  }, {});
+  }, {
+    freezeTableName: true,
+    timestamps: false
+  });
   participant.associate = function(models) {
     // associations can be defined here
     participant.hasOne(modes.survey, {foreignKey: 'participant_id'});
