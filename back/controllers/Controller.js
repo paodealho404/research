@@ -7,9 +7,9 @@ const participants = models.participant;
 const survey = models.survey;
 
 controllers.createParticipant = (req, res) => {
-  const gender = req.body.gender.toString(), age = req.body.age.toString(), 
+  const gender = req.body.gender.toString(); age = req.body.age.toString(), 
   educational_level = req.body.educational_level.toString(),  state = req.body.state.toString();
-  console.log(gender,age,educational_level,state);
+  // console.log(gender,age,educational_level,state);
   participants.create({
     gender:gender,
     age:age,
@@ -26,11 +26,12 @@ controllers.createParticipant = (req, res) => {
 }
 controllers.createSurvey = (req,res) =>{
   const id = req.body.participant_id;
-  const q1 = req.body.q1,q2 = req.body.q2,q3 = req.body.q3,q4 = req.body.q4,q5 = req.body.q5,q6 = req.body.q6,
-  q7 = req.body.q7,q8 = req.body.q8,  q9 = req.body.q9, openQuestion1 = req.body.openQuestion1,
-  openQuestion2 = req.body.openQuestion2, survey_type = req.body.survey_type;
+  const q1 = req.body.q1.toString(),q2 = req.body.q2.toString(),q3 = req.body.q3.toString(),q4 = req.body.q4.toString(),q5 = req.body.q5.toString(),q6 = req.body.q6.toString(),
+  q7 = req.body.q7.toString(),q8 = req.body.q8.toString(),  q9 = req.body.q9.toString(), openQuestion1 = req.body.openQuestion1.toString(),
+  openQuestion2 = req.body.openQuestion2.toString(), survey_type = req.body.survey_type;
+  // console.log(id,q1,q2,q3,q4,q5,q6,q7,q8,q9,openQuestion1, openQuestion2, survey_type);
   survey.create({
-    participant_id:participant_id,
+    participant_id:id,
     q1:q1,
     q2:q2,
     q3:q3,
@@ -66,7 +67,7 @@ controllers.getSurveys = (req,res) =>{
   model.sequelize.query('SELECT COUNT(*) AS total_surveys FROM survey;',
   {type: model.sequelize.QueryTypes.SELECT})
   .then(data=>{
-    res.json(data);
+    res.status(200).json(data);
   })
   .catch(error=>{
     return error;
