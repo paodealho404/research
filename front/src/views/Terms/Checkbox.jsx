@@ -5,10 +5,8 @@ const CheckBox = (props) => {
     <strong>
         <label htmlFor={props.name} className="form-label text-secondary" style={{fontSize: '20px'}}>{props.title}</label>
     </strong>
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    <b className="text-danger">(Preenchimento obrigatório)</b>
+    <b className="text-danger" style={{display: 'block'}}>(Preenchimento obrigatório)</b>
+    <br/>
     <div className="radio">
       {props.options.map(option => {
         return (

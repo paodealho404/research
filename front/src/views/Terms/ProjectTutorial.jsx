@@ -13,10 +13,8 @@ class ProjectTutorial extends React.Component{
     {
         super(props);
         this.state = {
-            user:{},
             redirect: false
         }
-
         this.redirect = this.redirect.bind(this);
         this._onReady = this._onReady.bind(this);
     }
@@ -38,7 +36,6 @@ class ProjectTutorial extends React.Component{
                 autoplay: 1
             }
         }
-
         return(
             <div>
             <Header/>

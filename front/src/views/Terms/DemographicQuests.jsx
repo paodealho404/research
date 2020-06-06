@@ -178,14 +178,15 @@ class FormContainer extends React.Component {
                   selectedOptions = {this.state.participant.age}
                   value = {this.state.participant.age}
                   handleChange={this.handleCheckBoxAge}/>  
-                  <br/><br/>
+                  <br/>
                 <Checkbox title={'Selecione seu gênero:'}
                   name={'gender'}
                   options={this.state.genderOptions}
                   selectedOptions = {this.state.participant.gender}
                   value = {this.state.participant.gender}
                   handleChange={this.handleCheckBoxGender}/>  
-                  <br/><br/>
+                  <br/>
+                  <br/>
                 <TextArea 
                   title={'Informe qual nível educacional você leciona:'}
                   rows={1}
@@ -194,9 +195,9 @@ class FormContainer extends React.Component {
                   // selectedOptions = {this.state.participant.educational_level}
                   value = {this.state.participant.educational_level}
                   handleChange={this.handleCheckBoxEducacationalLevel}/> 
-                  <br/><br/>
-              <br/><br/>
-              <TextArea 
+                  <br/>
+                  <br/>
+                <TextArea 
                   title={'Informe seu Estado: '}
                   rows={1}
                   name={'state'}
@@ -204,13 +205,12 @@ class FormContainer extends React.Component {
                   // selectedOptions = {this.state.participant.educational_level}
                   value = {this.state.participant.state}
                   handleChange={this.handleTextArea}/> 
-                  <br/><br/>
+                  <br/>
+                  <br/>
                 <Col sm={{ span: 10, offset: 5 }}>
                     <Button color="#C0B283" disabled={!this.state.formValid} onClick={() => this.redirect()}> 
                          <span className="text-white"> Próxima Etapa </span>       
                     </Button>
-
-                    
                 </Col>
             </Form>
             {this.state.redirect ? (<Redirect to={{ pathname:"/projectdescription"}}/>) : (this.state.component)}

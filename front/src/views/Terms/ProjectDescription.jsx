@@ -13,26 +13,13 @@ class ProjectDescription extends React.Component{
     {
         super(props);
         this.state = {
-            name:'',
-            gender:'',
-            educationalLevel:'',
-            age:'',
-            studyDomain:'',
             redirect: false
         }
-
         this.redirect = this.redirect.bind(this);
     }
+    
     redirect(){
-        let user_info = JSON.parse(localStorage.getItem('user'));
-        let name = user_info.name;
-        let gender = user_info.gender;
-        let age = user_info.age;
-        let educationalLevel = user_info.educationalLevel;
-        let studyDomain = user_info.studyDomain;
-        this.setState({name: name, gender: gender, age: age, educationalLevel: educationalLevel, studyDomain: studyDomain});
         this.setState({redirect: true});
-        
     }
 
     render(){

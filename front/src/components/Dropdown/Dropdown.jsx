@@ -23,8 +23,8 @@ constructor() {
     super()
     this.state = {
         // Variables for control the Collapse
-        isOpenCollapse: [false, false],
-        rotate: ["down", "down"]
+        isOpenCollapse: [true, false],
+        rotate: ["up", "down"]
     }
 }
     

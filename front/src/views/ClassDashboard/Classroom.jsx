@@ -45,6 +45,7 @@ class Classroom extends React.Component{
     }
 
     render() { 
+      let participant_info = JSON.parse(localStorage.getItem('participant'));
       return (
         <div>
           <Modal isOpen={this.props.modalIsOpen} toggle={this.props.toggleModal.bind(this)} >
@@ -55,7 +56,7 @@ class Classroom extends React.Component{
                     <Card key={data.id}  style={{width: '10rem'}} > 
                     <CardBody>
                       <CardTitle > 
-                        <Link to={{pathname:"/admin/classDashboard_1/"+data.id+"/"+this.props.teacherId+"/"+this.props.courseId}} >{data.name}</Link> 
+                        <Link to={{pathname:"/admin/classDashboard_" + participant_info.dashboard_sequence[0] + "/" + data.id + "/" + this.props.teacherId + "/" + this.props.courseId}}>{data.name}</Link> 
                       </CardTitle>                      
                     </CardBody>                                     
                     </Card>
