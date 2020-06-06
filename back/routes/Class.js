@@ -9,7 +9,7 @@ const Controller = require('../controllers/Controller');
 //Store participants' info
 routes.post('/createParticipant', Controller.createParticipant);
 //Select current number of participants
-routes.get('/getRecentParticipant', Controller.getRecentParticipant);
+routes.get('/getParticipants', Controller.getParticipants);
 //Store participants for a survey
 routes.post('/createSurvey', Controller.createSurvey);
 //Select current number of surveys

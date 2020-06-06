@@ -5,7 +5,8 @@ import { Redirect } from 'react-router-dom';
 import {
   Col, 
   Form,
-  Button
+  Button,
+  Alert
 } from 'reactstrap';
 
 import Checkbox from "./Checkbox";
@@ -18,11 +19,15 @@ class FormContainer extends React.Component {
         super(props);
         this.state = {
           participant: {
+            id: null,
             gender: '',
             age: '',
             educational_level: '',
-            state: ''
+            state: '',
+            dashboard_sequence: null
           },
+          component: '',
+          failed: false,
           redirect: false,
           age_valid: false,
           gender_valid:false,
@@ -121,18 +126,34 @@ class FormContainer extends React.Component {
     }
     redirect()
     {
-      localStorage.setItem('participant', JSON.stringify(this.state.participant));
-      let participant = JSON.parse(localStorage.getItem('participant'));
-      console.log(participant);
-      axios.post(baseUrl+'/createParticipant', participant)
-      .then(res=>{
-        console.log(res);
-      })
-      .catch(error=>{
-        return error;
-      })
-      this.setState({redirect: true});
-    }
+      axios.get(baseUrl+'/getParticipants')
+      .then((res)=>
+        {
+          const participant_id = res.data[0].count+1;
+          const dashboard_perm = [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]];
+          const perm = dashboard_perm[(participant_id-1)%dashboard_perm.length];
+          this.setState(prevState => ({
+            participant: {
+              ...prevState.participant, id: participant_id, dashboard_sequence: perm
+            }, 
+            redirect: true, 
+            failed: false
+            }));          
+          localStorage.setItem('participant', JSON.stringify(this.state.participant));   
+          console.log(localStorage.getItem('participant'));
+        })
+      .catch(error=>
+        {//Sujeito a melhoras
+          this.setState({
+              failed: true
+            });
+          const component = (this.state.failed) ? (<center><Alert color='danger'>Perdão, o banco de dados está temporariamente desativado, nos contate.</Alert></center>):(<div></div>);
+          this.setState({
+              component: component
+            });
+          console.log(this.state.failed);
+        });
+      }
     render(){
         return(
           <div>
@@ -189,9 +210,10 @@ class FormContainer extends React.Component {
                          <span className="text-white"> Próxima Etapa </span>       
                     </Button>
 
-                    {this.state.redirect ? (<Redirect to={{ pathname:"/projectdescription"}}/>) : (<div></div>)}
+                    
                 </Col>
             </Form>
+            {this.state.redirect ? (<Redirect to={{ pathname:"/projectdescription"}}/>) : (this.state.component)}
             </Col>
         </div>)
     }

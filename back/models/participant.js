@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   participant.associate = function(models) {
     // associations can be defined here
-    participant.hasMany(modes.survey, {foreignKey: 'participant_id'});
+    participant.hasMany(models.survey, {foreignKey: 'participant_id'});
   };
   return participant;
 };

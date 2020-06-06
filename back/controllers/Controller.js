@@ -17,7 +17,7 @@ controllers.createParticipant = (req, res) => {
     state:state
   })
   .then(function(data){
-    res.status(200).json({ message: 'Successfully added a new participant' });
+    res.status(200).json({message: 'Succesfully added a new participant'});
     return data;
   })
   .catch(error => {
@@ -25,7 +25,10 @@ controllers.createParticipant = (req, res) => {
   })
 }
 controllers.createSurvey = (req,res) =>{
-  const {participant_id,q1,q2,q3,q4,q5,q6,q7,q8,q9,openQuestion1,openQuestion2,survey_type} = req.body;
+  const id = req.body.participant_id;
+  const q1 = req.body.q1,q2 = req.body.q2,q3 = req.body.q3,q4 = req.body.q4,q5 = req.body.q5,q6 = req.body.q6,
+  q7 = req.body.q7,q8 = req.body.q8,  q9 = req.body.q9, openQuestion1 = req.body.openQuestion1,
+  openQuestion2 = req.body.openQuestion2, survey_type = req.body.survey_type;
   survey.create({
     participant_id:participant_id,
     q1:q1,
@@ -49,8 +52,8 @@ controllers.createSurvey = (req,res) =>{
     return error;
   })
 }
-controllers.getRecentParticipant = (req,res) =>{
-  model.sequelize.query('SELECT LAST_INSERT_ID();',
+controllers.getParticipants = (req,res) =>{
+  model.sequelize.query('SELECT COUNT(*) AS count FROM participant;',
   {type: model.sequelize.QueryTypes.SELECT})
   .then(function(data){
     res.json(data);
