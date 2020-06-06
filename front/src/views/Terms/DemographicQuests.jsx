@@ -6,9 +6,9 @@ import {
   Col, 
   Form,
   Button,
-  Alert
 } from 'reactstrap';
 
+import PopUp from '../PopUp';
 import Checkbox from "./Checkbox";
 import TextArea from "./TextArea";
 import Header from "./Header";
@@ -147,7 +147,7 @@ class FormContainer extends React.Component {
           this.setState({
               failed: true
             });
-          const component = (this.state.failed) ? (<center><Alert color='danger'>Perdão, o banco de dados está temporariamente desativado, nos contate.</Alert></center>):(<div></div>);
+          const component = (this.state.failed) ? (PopUp.showMessage("error", "Perdão, o banco de dados está temporariamente desativado, nos contate.")):(<div></div>);
           this.setState({
               component: component
             });
