@@ -9,11 +9,13 @@ import {
 } from 'reactstrap';
 
 import PopUp from '../PopUp';
-import Checkbox from "./Checkbox";
-import TextArea from "./TextArea";
-import Header from "./Header";
+import Checkbox from "./components/Checkbox";
+import TextArea from "./components/TextArea";
+import Header from "./components/Header";
 import axios from 'axios';
+
 const baseUrl =  process.env.REACT_APP_API_URL || "http://localhost:4000/course";
+
 class FormContainer extends React.Component {
     constructor(props) {
         super(props);
@@ -139,8 +141,8 @@ class FormContainer extends React.Component {
             redirect: true, 
             failed: false
             }));          
-          localStorage.setItem('participant', JSON.stringify(this.state.participant));   
-          console.log(localStorage.getItem('participant'));
+          sessionStorage.setItem('participant', JSON.stringify(this.state.participant));   
+          console.log(sessionStorage.getItem('participant'));
         })
       .catch(error=>
         {//Sujeito a melhoras

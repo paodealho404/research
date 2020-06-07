@@ -1,12 +1,13 @@
 import React from "react";
 import axios from 'axios';
+
 import {
-  Card,
-  CardBody,
-  CardFooter,
-  CardTitle,
-  Row,
-  Col
+    Card,
+    CardBody,
+    CardFooter,
+    CardTitle,
+    Row,
+    Col
 } from "reactstrap";
 
 const baseUrl = process.env.REACT_APP_API_URL || "http://localhost:4000";

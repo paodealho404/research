@@ -50,7 +50,7 @@ class Login extends Component {
           password: user.password
         })
         .then(response => {
-          localStorage.setItem('usertoken', response.data)         
+          sessionStorage.setItem('usertoken', response.data)         
           return response.data
         })
         .catch(err => {

@@ -45,7 +45,7 @@ class Classroom extends React.Component{
     }
 
     render() { 
-      let participant_info = JSON.parse(localStorage.getItem('participant'));
+      let participant_info = JSON.parse(sessionStorage.getItem('participant'));
       return (
         <div>
           <Modal isOpen={this.props.modalIsOpen} toggle={this.props.toggleModal.bind(this)} >

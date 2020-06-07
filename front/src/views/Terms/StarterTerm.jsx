@@ -1,11 +1,14 @@
 import React from "react";
+
 import {
   Input,
   Button,
   Col
 } from "reactstrap";
+
 import { Link } from 'react-router-dom';
-import Header from "./Header";
+
+import Header from "./components/Header";
 
 class StarterTerm extends React.Component {
     constructor(props)
@@ -16,6 +19,10 @@ class StarterTerm extends React.Component {
             checkValid: false,
         }
         this.handleCheckbox = this.handleCheckbox.bind(this);
+    }
+
+    componentDidMount() {
+        sessionStorage.clear();
     }
     
     handleCheckbox() {

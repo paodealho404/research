@@ -1,10 +1,14 @@
 import React from "react";
+
 import {
     Button,
     Col
   } from "reactstrap";
-import Header from "./Header";
+
+import Header from "./components/Header";
+
 import { Redirect } from 'react-router-dom';
+
 import modelo_gameficacao from '../../assets/img/modelo_gameficacao.png';
 
 class ProjectDescription extends React.Component{

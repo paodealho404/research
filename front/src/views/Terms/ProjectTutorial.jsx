@@ -1,10 +1,14 @@
 import React from "react";
+
 import {
     Button,
     Col
   } from "reactstrap";
+
 import { Redirect } from 'react-router-dom';
-import Header from "./Header";
+
+import Header from "./components/Header";
+
 import YouTube from 'react-youtube';
 
 class ProjectTutorial extends React.Component{

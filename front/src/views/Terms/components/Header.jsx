@@ -4,8 +4,8 @@ import {
     Col
 } from 'reactstrap';
   
-import logo_ufal from "../../assets/img/logo_ufal_.png";
-import logo_nees from "../../assets/img/nees.png";
+import logo_ufal from "../../../assets/img/logo_ufal_.png";
+import logo_nees from "../../../assets/img/nees.png";
 
 class Header extends React.Component {
     render(){

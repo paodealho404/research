@@ -8,9 +8,9 @@ import {
   Col
 } from 'reactstrap';
 
-import Checkbox from "./Checkbox";
-import Header from "./Header";
-import LargeTextArea from "./LargeTextArea";
+import Checkbox from "./components/Checkbox";
+import Header from "./components/Header";
+import LargeTextArea from "./components/LargeTextArea";
 
 const baseUrl =  process.env.REACT_APP_API_URL || "http://localhost:4000/course";
 
@@ -53,7 +53,7 @@ class DashboardQuestions extends React.Component {
     }  
 
     redirect(){
-        let participant_info = JSON.parse(localStorage.getItem('participant'));
+        let participant_info = JSON.parse(sessionStorage.getItem('participant'));
 
         let survey_type = parseInt(this.props.location.state.DashboardID);
         let surveyName = 'survey' + survey_type; 
@@ -63,13 +63,13 @@ class DashboardQuestions extends React.Component {
         console.log(surveyName);
 
         this.setState(prevState => ({ questionAnswers: {...prevState.questionAnswers, participant_id: participant_info.id, survey_type: survey_type}}), () => {
-            localStorage.setItem(surveyName, JSON.stringify(this.state.questionAnswers));
+            sessionStorage.setItem(surveyName, JSON.stringify(this.state.questionAnswers));
             
             this.setState({redirect: true});
 
             participant_info.dashboard_sequence.shift();
 
-            localStorage.setItem('participant', JSON.stringify(participant_info));
+            sessionStorage.setItem('participant', JSON.stringify(participant_info));
         });
     }
 
@@ -143,11 +143,11 @@ class DashboardQuestions extends React.Component {
 
     render()
     {
-        let participant_info = JSON.parse(localStorage.getItem('participant'));
+        let participant_info = JSON.parse(sessionStorage.getItem('participant'));
 
-        let classroomId = parseInt(localStorage.getItem('classroomId'));
-        let teacherId = parseInt(localStorage.getItem('teacherId'));
-        let courseId = parseInt(localStorage.getItem('courseId'));
+        let classroomId = parseInt(sessionStorage.getItem('classroomId'));
+        let teacherId = parseInt(sessionStorage.getItem('teacherId'));
+        let courseId = parseInt(sessionStorage.getItem('courseId'));
         return(
             <div>
             <Header/>

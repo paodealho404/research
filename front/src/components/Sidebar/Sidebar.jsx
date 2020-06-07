@@ -62,20 +62,25 @@ class Sidebar extends React.Component {
       >
         <div className="logo">        
             <div className="logo-img">
-              {localStorage.getItem("teacherGender") === "Feminino" ? 
-              <center><img src={prof_female} alt="profFemale-logo"/> </center> 
+              {JSON.parse(sessionStorage.getItem('participant')).gender === "Feminino" ? 
+              <center>
+                <br/> 
+                <img src={prof_female} alt="profFemale-logo"/>
+                <br/><br/> 
+              </center> 
               :
               <img src={prof_male} alt="profMale-logo"/>
               }
             </div>          
-            {localStorage.getItem("teacherGender") === "Feminino" ? 
-            <Row><Col className=".col-sm-auto .offset-sm-3 text-center text-success" > Bem-Vinda, Professora
-              {/*  {localStorage.getItem("teacherName")}  */}
+            {JSON.parse(sessionStorage.getItem('participant')).gender === "Feminino" ? 
+            <Row><Col className=".col-sm-auto .offset-sm-3 text-center text-success" >Bem-Vinda, Professora
+              {/*  {sessionStorage.getItem("teacherName")}  */}
               <br/> 
             </Col></Row>        
             : 
             <Row><Col className=".col-sm-auto .offset-sm-3 text-center text-success" >Bem-Vindo, Professor 
-            {/* {localStorage.getItem("teacherName")}   */}
+              {/* {sessionStorage.getItem("teacherName")}   */}
+              <br/>
             </Col></Row>}        
         </div>
         <div className="sidebar-wrapper" ref={this.sidebar}>
