@@ -17,13 +17,6 @@ class ClassDashboard extends React.Component {
         }
     }
 
-    componentDidMount()
-    {
-        sessionStorage.setItem('classroomId', this.props.match.params.id);
-        sessionStorage.setItem('teacherId', this.props.match.params.teacherId);
-        sessionStorage.setItem('courseId', this.props.match.params.courseId);
-    }
-
     render() {
         return (
             <>

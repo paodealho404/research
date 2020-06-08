@@ -248,7 +248,7 @@ class DashboardQuestions extends React.Component {
                             </Button>
                             {participant_info.dashboard_sequence.length > 0 ? (
                                 <div>
-                                    {this.state.redirect ? (<Redirect to={{pathname:"/admin/classDashboard_" + participant_info.dashboard_sequence[0] + "/" + classroomId + "/" + teacherId + "/" + courseId}}/>) : (<div></div>)}
+                                    {this.state.redirect ? (<Redirect to={{pathname:"/admin/classDashboard_" + participant_info.dashboard_sequence[0] + "/7/345/32"}}/>) : (<div></div>)}
                                 </div>
                             ) : (
                                 <Redirect to={{pathname:"/thanks"}}/>
