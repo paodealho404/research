@@ -54,10 +54,10 @@ class DashboardQuestions extends React.Component {
     }  
     componentWillMount()
     {
-      if(!sessionStorage.getItem('accepted') || !sessionStorage.getItem('participant'))
-      {
-        this.setState({accepted: false});
-      }
+        if(!sessionStorage.getItem('accepted') || !sessionStorage.getItem('participant'))
+        {
+            this.setState({accepted: false});
+        }
     }
     redirect(){
         let participant_info = JSON.parse(sessionStorage.getItem('participant'));
@@ -132,15 +132,12 @@ class DashboardQuestions extends React.Component {
     handleChange(event) {
         let name = event.target.name;
         let value = event.target.value;
-        this.setState( prevState => ({ questionAnswers : 
-            {...prevState.questionAnswers, [name]: [value]
-            }
-          }), ()=>{this.validateField(name,value)});
+        this.setState(prevState => ({ questionAnswers : {...prevState.questionAnswers, [name]: [value]}}), ()=>{this.validateField(name,value)});
     }
 
     validateForm()
     {
-      this.setState({formValid: (this.state.q1Valid && this.state.q2Valid && this.state.q3Valid && this.state.q4Valid && this.state.q5Valid && this.state.q6Valid && this.state.q7Valid && this.state.q8Valid && this.state.q9Valid)});
+        this.setState({formValid: (this.state.q1Valid && this.state.q2Valid && this.state.q3Valid && this.state.q4Valid && this.state.q5Valid && this.state.q6Valid && this.state.q7Valid && this.state.q8Valid && this.state.q9Valid)});
     }
 
     render()
@@ -151,112 +148,117 @@ class DashboardQuestions extends React.Component {
         let teacherId = parseInt(sessionStorage.getItem('teacherId'));
         let courseId = parseInt(sessionStorage.getItem('courseId'));
         return(
-            <div>
-            <Header/>
-            <p className= " text-center font-weight-bold " style={{fontFamily: 'Calibri', fontSize: '25px', color: '#6c757d'}}> Responda as seguintes questões sobre a sua experiência com o painel apresentado: </p> <br/> 
-            <Form className="container" >
-                <Checkbox title={'Eu entendi o que as informações estatísticas no dashboard implicam.'} 
-                    name={'q1'}
-                    options={this.state.possibleOptions}
-                    selectedOptions = {this.state.questionAnswers.q1}
-                    value = {this.state.questionAnswers.q1}
-                    handleChange = {this.handleChange}/>
-                <br/>
+            this.state.accepted ? (
+                <div>
+                    <Header/>
+                    <p className= " text-center font-weight-bold " style={{fontFamily: 'Calibri', fontSize: '25px', color: '#6c757d'}}> Responda as seguintes questões sobre a sua experiência com o painel apresentado: </p>
+                    <br/> 
+                    <Form className="container">
+                        <Checkbox title={'Eu entendi o que as informações estatísticas no dashboard implicam.'} 
+                            name={'q1'}
+                            options={this.state.possibleOptions}
+                            selectedOptions = {this.state.questionAnswers.q1}
+                            value = {this.state.questionAnswers.q1}
+                            handleChange = {this.handleChange}/>
+                        <br/>
 
-                <Checkbox title={'Eu entendi o que as informações visuais no dashboard implicam.'} 
-                    name={'q2'}
-                    options={this.state.possibleOptions}
-                    selectedOptions = {this.state.questionAnswers.q2}
-                    value = {this.state.questionAnswers.q2}
-                    handleChange = {this.handleChange}/>
-                <br/>
+                        <Checkbox title={'Eu entendi o que as informações visuais no dashboard implicam.'} 
+                            name={'q2'}
+                            options={this.state.possibleOptions}
+                            selectedOptions = {this.state.questionAnswers.q2}
+                            value = {this.state.questionAnswers.q2}
+                            handleChange = {this.handleChange}/>
+                        <br/>
 
-                <Checkbox title={'Entendi o status da turma imediatamente através do dashboard.'} 
-                    name={'q3'}
-                    options={this.state.possibleOptions}
-                    selectedOptions = {this.state.questionAnswers.q3}
-                    value = {this.state.questionAnswers.q3}
-                    handleChange = {this.handleChange}/>
-                <br/>
-                
-                <Checkbox title={'As informações que estão no dashboard são as que eu quero saber.'} 
-                    name={'q4'}
-                    options={this.state.possibleOptions}
-                    selectedOptions = {this.state.questionAnswers.q4}
-                    value = {this.state.questionAnswers.q4}
-                    handleChange = {this.handleChange}/>
-                <br/>
+                        <Checkbox title={'Entendi o status da turma imediatamente através do dashboard.'} 
+                            name={'q3'}
+                            options={this.state.possibleOptions}
+                            selectedOptions = {this.state.questionAnswers.q3}
+                            value = {this.state.questionAnswers.q3}
+                            handleChange = {this.handleChange}/>
+                        <br/>
+                        
+                        <Checkbox title={'As informações que estão no dashboard são as que eu quero saber.'} 
+                            name={'q4'}
+                            options={this.state.possibleOptions}
+                            selectedOptions = {this.state.questionAnswers.q4}
+                            value = {this.state.questionAnswers.q4}
+                            handleChange = {this.handleChange}/>
+                        <br/>
 
-                <Checkbox title={'O dashboard inclui apenas informações essenciais.'} 
-                    name={'q5'}
-                    options={this.state.possibleOptions}
-                    selectedOptions = {this.state.questionAnswers.q5}
-                    value = {this.state.questionAnswers.q5}
-                    handleChange = {this.handleChange}/>
-                <br/>
+                        <Checkbox title={'O dashboard inclui apenas informações essenciais.'} 
+                            name={'q5'}
+                            options={this.state.possibleOptions}
+                            selectedOptions = {this.state.questionAnswers.q5}
+                            value = {this.state.questionAnswers.q5}
+                            handleChange = {this.handleChange}/>
+                        <br/>
 
-                <Checkbox title={'O dashboard pode me ajudar a monitorar atividades relacionadas a metas.'} 
-                    name={'q6'}
-                    options={this.state.possibleOptions}
-                    selectedOptions = {this.state.questionAnswers.q6}
-                    value = {this.state.questionAnswers.q6}
-                    handleChange = {this.handleChange}/>
-                <br/>
-                
-                <Checkbox title={'O dashboard pode me ajudar a mudar as estratégias de gerenciamento de recursos para turma.'} 
-                    name={'q7'}
-                    options={this.state.possibleOptions}
-                    selectedOptions = {this.state.questionAnswers.q7}
-                    value = {this.state.questionAnswers.q7}
-                    handleChange = {this.handleChange}/>
-                <br/>
+                        <Checkbox title={'O dashboard pode me ajudar a monitorar atividades relacionadas a metas.'} 
+                            name={'q6'}
+                            options={this.state.possibleOptions}
+                            selectedOptions = {this.state.questionAnswers.q6}
+                            value = {this.state.questionAnswers.q6}
+                            handleChange = {this.handleChange}/>
+                        <br/>
+                        
+                        <Checkbox title={'O dashboard pode me ajudar a mudar as estratégias de gerenciamento de recursos para turma.'} 
+                            name={'q7'}
+                            options={this.state.possibleOptions}
+                            selectedOptions = {this.state.questionAnswers.q7}
+                            value = {this.state.questionAnswers.q7}
+                            handleChange = {this.handleChange}/>
+                        <br/>
 
-                <Checkbox title={'O dashboard pode me ajudar a alcançar os objetivos de desempenho desejado para a turma.'} 
-                    name={'q8'}
-                    options={this.state.possibleOptions}
-                    selectedOptions = {this.state.questionAnswers.q8}
-                    value = {this.state.questionAnswers.q8}
-                    handleChange = {this.handleChange}/>
-                <br/>
+                        <Checkbox title={'O dashboard pode me ajudar a alcançar os objetivos de desempenho desejado para a turma.'} 
+                            name={'q8'}
+                            options={this.state.possibleOptions}
+                            selectedOptions = {this.state.questionAnswers.q8}
+                            value = {this.state.questionAnswers.q8}
+                            handleChange = {this.handleChange}/>
+                        <br/>
 
-                <Checkbox title={'Ficarei motivado a me engajar no uso da plataforma ao revisar o dashboard.'} 
-                    name={'q9'}
-                    options={this.state.possibleOptions}
-                    selectedOptions = {this.state.questionAnswers.q9}
-                    value = {this.state.questionAnswers.q9}
-                    handleChange = {this.handleChange}/>
-                <br/>
+                        <Checkbox title={'Ficarei motivado a me engajar no uso da plataforma ao revisar o dashboard.'} 
+                            name={'q9'}
+                            options={this.state.possibleOptions}
+                            selectedOptions = {this.state.questionAnswers.q9}
+                            value = {this.state.questionAnswers.q9}
+                            handleChange = {this.handleChange}/>
+                        <br/>
 
-                <LargeTextArea
-                  title={'Por favor, descreva aqui um ponto negativo sobre esta versão da ferramenta apresenta.'}
-                  rows={3}
-                  value={this.state.questionAnswers.openQuestion1}
-                  name={'openQuestion1'}
-                  handleChange={this.handleChange}/>
-                <br/>
+                        <LargeTextArea
+                            title={'Por favor, descreva aqui um ponto negativo sobre esta versão da ferramenta apresenta.'}
+                            rows={3}
+                            value={this.state.questionAnswers.openQuestion1}
+                            name={'openQuestion1'}
+                            handleChange={this.handleChange}/>
+                        <br/>
 
-                <LargeTextArea
-                  title={'Por favor, descreva aqui um ponto positivo sobre esta versão da ferramenta apresenta.'}
-                  rows={3}
-                  value={this.state.questionAnswers.openQuestion2}
-                  name={'openQuestion2'}
-                  handleChange={this.handleChange}/>
-                <br/>
+                        <LargeTextArea
+                            title={'Por favor, descreva aqui um ponto positivo sobre esta versão da ferramenta apresenta.'}
+                            rows={3}
+                            value={this.state.questionAnswers.openQuestion2}
+                            name={'openQuestion2'}
+                            handleChange={this.handleChange}/>
+                        <br/>
 
-                <Col sm={{ span: 10, offset: 5 }}>
-                    <Button color="#C0B283" disabled={!this.state.formValid} onClick={() => this.redirect()}> 
-                        <span className="text-white">Submeter</span>       
-                    </Button>
-                    
-                    {this.state.accepted ? 
-                    (<div> {participant_info.dashboard_sequence.length > 0 ? 
-                        (<div>
-                            {this.state.redirect ? (<Redirect to={{pathname:"/admin/classDashboard_" + participant_info.dashboard_sequence[0] + "/" + classroomId + "/" + teacherId + "/" + courseId}}/>) : (<div></div>)}
-                        </div>) : ( <Redirect to={{pathname:"/thanks"}}/>)}
-                    </div>) : (<Redirect to={{pathname: '/'}}/>)}
-                </Col>
-            </Form>
-              </div>          
+                        <Col sm={{ span: 10, offset: 5 }}>
+                            <Button color="#C0B283" disabled={!this.state.formValid} onClick={() => this.redirect()}> 
+                                <span className="text-white">Submeter</span>       
+                            </Button>
+                            {participant_info.dashboard_sequence.length > 0 ? (
+                                <div>
+                                    {this.state.redirect ? (<Redirect to={{pathname:"/admin/classDashboard_" + participant_info.dashboard_sequence[0] + "/" + classroomId + "/" + teacherId + "/" + courseId}}/>) : (<div></div>)}
+                                </div>
+                            ) : (
+                                <Redirect to={{pathname:"/thanks"}}/>
+                            )}
+                        </Col>
+                    </Form>
+                </div>  
+            ) : (
+                <Redirect to={{pathname: '/'}}/>
+            )        
         )      
     }
 }
