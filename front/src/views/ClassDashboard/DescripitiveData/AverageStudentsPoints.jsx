@@ -18,21 +18,31 @@ class AverageStudentsPoints extends React.Component {
         super(props);
         this.cancelTokenSource = new axios.CancelToken.source();
         this.state = {
-
+            Average: null
         }
     }
 
     componentDidMount() {
-        const courseId = this.props.courseId;
-        const curriculumId = this.props.curriculumId;
         const classroomId = this.props.classroomId;
 
-        const url = baseUrl + "/course/getExpectedDate/" + curriculumId + "/" + courseId + "/" + classroomId;
+        const url = baseUrl + "/course/getStudentesLevel/" + classroomId;
 
         axios.get(url, { cancelToken: this.cancelTokenSource.token })
             .then(res => {
                 if (res.data) {
+                    const data = res.data;
+                    let Average = 0;
 
+                    for(let i = 0; i < data.length; i++){
+                        Average += data[i].currentPoints;
+                    }
+
+                    Average /= data.length;
+                    Average = parseInt(Average);
+
+                    this.setState({
+                        Average: Average
+                    });
                 } else {
                     alert("Error web service");
                 }
@@ -52,7 +62,7 @@ class AverageStudentsPoints extends React.Component {
     }
 
     render() {
-        const { Date } = this.state;
+        const { Average } = this.state;
         return (
             <Card className="card-stats">
                 <CardBody>
@@ -66,7 +76,7 @@ class AverageStudentsPoints extends React.Component {
                             <div className="numbers">
                                 <p className="card-category">Média aritmética da pontuação dos Alunos da Turma</p>
                                 <div style={{ fontSize: 45 }}>
-                                    <CardTitle tag="p">Média Aqui</CardTitle>
+                                    <CardTitle tag="p">{Average}</CardTitle>
                                 </div>
                                 <p />
                             </div>

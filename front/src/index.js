@@ -10,7 +10,6 @@ import "perfect-scrollbar/css/perfect-scrollbar.css";
 import "sweetalert2/dist/sweetalert2.js";
 
 import AdminLayout from "layouts/Admin.jsx";
-import Classes from "views/Classes.jsx";
 import ClassDashboard_1 from "views/ClassDashboard/Dashboard_1/ClassDashboard.jsx";
 import ClassDashboard_2 from "views/ClassDashboard/Dashboard_2/ClassDashboard.jsx";
 import ClassDashboard_3 from "views/ClassDashboard/Dashboard_3/ClassDashboard.jsx";
@@ -18,7 +17,6 @@ import StarterTerm from "views/Terms/StarterTerm.jsx";
 import DemographicQuests from "views/Terms/DemographicQuests.jsx";
 //import FinalQuests from 'views/Terms/FinalQuests.jsx';
 import Thanks from 'views/Terms/Thanks.jsx';
-import ProjectDescription from 'views/Terms/ProjectDescription';
 import ProjectTutorial from 'views/Terms/ProjectTutorial';
 import DashboardQuestions from 'views/Terms/DashboardQuestions';
 
@@ -27,10 +25,8 @@ ReactDOM.render(
     <Switch>
         <Route exact path="/" component = {StarterTerm}/>
         <Route path="/demographicquest" component = {DemographicQuests}/>
-        <Route path="/projectdescription" component = {ProjectDescription}/>
         <Route path="/projecttutorial" component = {ProjectTutorial}/>
         <Route path="/admin" component={ props=> <AdminLayout {...props} />}/>
-        <Route path="/admin/classes" component={ props => <AdminLayout {...props} component={Classes}/>}/>
         <Route path="/admin/classdashboard_1" render={props => <AdminLayout {...props} component={ClassDashboard_1}/>}/>
         <Route path="/admin/classdashboard_2" render={props => <AdminLayout {...props} component={ClassDashboard_2}/>}/>
         <Route path="/admin/classdashboard_3" render={props => <AdminLayout {...props} component={ClassDashboard_3}/>}/>

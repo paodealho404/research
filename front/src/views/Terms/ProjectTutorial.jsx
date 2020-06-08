@@ -40,6 +40,8 @@ class ProjectTutorial extends React.Component{
                 autoplay: 1
             }
         }
+
+        const participant_info = JSON.parse(sessionStorage.getItem('participant'));
         return(
             <div>
             <Header/>
@@ -59,7 +61,7 @@ class ProjectTutorial extends React.Component{
                 <Button color ="#C0B283" type="button" onClick={this.redirect}> 
                     Visualizar Ferramenta
                 </Button>
-                {this.state.redirect ? (<Redirect to={{ pathname:"/admin/classes"}}/>) : (<div></div>)}
+                {this.state.redirect ? (<Redirect to={{pathname:"/admin/classDashboard_" + participant_info.dashboard_sequence[0] + "/7/345/32"}}/>) : (<div></div>)}
             </center>
             <br/>
             </Col>
