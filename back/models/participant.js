@@ -9,7 +9,8 @@ module.exports = (sequelize, DataTypes) => {
     gender: DataTypes.STRING,
     age: DataTypes.STRING,
     educational_level: DataTypes.STRING,
-    state: DataTypes.STRING
+    state: DataTypes.STRING,
+    technical_level: DataTypes.STRING
   }, {
     freezeTableName: true,
     timestamps: false

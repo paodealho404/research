@@ -26,6 +26,7 @@ class FormContainer extends React.Component {
             age: '',
             educational_level: '',
             state: '',
+            technical_level: '',
             dashboard_sequence: null
           },
           component: '',
@@ -34,9 +35,11 @@ class FormContainer extends React.Component {
           age_valid: false,
           gender_valid:false,
           educational_level_valid :false,
+          technical_level_valid: false,
           state_valid:false,
-          formErrors: {state: '', age:'', educational_level:'', gender: ''},
+          formErrors: {state: '', age:'', educational_level:'', gender: '', technical_level_valid:''},
           formValid: false,
+          technical_level_options: ['Baixo', 'Médio', 'Alto'],
           ageOptions: ['Inferior a 18 anos', '18 a 25 anos', '26 a 40 anos', '41 a 65 anos', 'Superior a 65 anos'],
           genderOptions: ['Feminino', 'Masculino', 'Outros'],
           educational_levelOptions: ['Ensino Médio', 'Ensino Técnico', 'Ensino Superior', 'Mestrado', 'Doutorado'],
@@ -44,9 +47,20 @@ class FormContainer extends React.Component {
         this.handleTextArea = this.handleTextArea.bind(this);
         this.handleCheckBoxAge = this.handleCheckBoxAge.bind(this);
         this.handleCheckBoxGender = this.handleCheckBoxGender.bind(this);
+        this.handleCheckBoxTechnicalLevel = this.handleCheckBoxTechnicalLevel.bind(this);
         this.handleCheckBoxEducacationalLevel = this.handleCheckBoxEducacationalLevel.bind(this);
     }
-
+    handleCheckBoxTechnicalLevel(e)
+    {
+      const value = e.target.value;
+      this.setState(prevState=> (
+        {
+          participant: {
+            ...prevState.participant, technical_level: value
+          }
+        }
+      ),()=>{this.validateField('technical_level', value)})
+    }
     handleCheckBoxAge(e) {
         const value = e.target.value;
         this.setState( prevState => ({ participant : 
@@ -87,6 +101,7 @@ class FormContainer extends React.Component {
       let age_valid = this.state.age_valid;
       let gender_valid = this.state.gender_valid;
       let educational_level_valid = this.state.educational_level_valid ;
+      let technical_level_valid = this.state.technical_level_valid;
       let state_valid = this.state.state_valid;
       switch(fieldName) {
         case 'age':
@@ -105,6 +120,10 @@ class FormContainer extends React.Component {
           state_valid = value.length > 0;
           fieldValidationErrors.state_valid = state_valid ? '':'notValid';
           break;
+        case 'technical_level':
+          technical_level_valid = value.length > 0;
+          fieldValidationErrors.technical_level_valid = technical_level_valid ? '':'notValid';
+          break;
         default:
           break;
       }
@@ -113,14 +132,14 @@ class FormContainer extends React.Component {
                       age_valid: age_valid,
                       educational_level_valid : educational_level_valid ,
                       state_valid: state_valid,
-                      gender_valid: gender_valid
+                      gender_valid: gender_valid,
+                      technical_level_valid: technical_level_valid
                     }, this.validateForm);
     }
 
     validateForm() {
       this.setState({formValid: 
-        //this.state.nameValid && 
-        this.state.educational_level_valid && this.state.age_valid && this.state.gender_valid && this.state.state_valid})
+        this.state.educational_level_valid && this.state.age_valid && this.state.gender_valid && this.state.state_valid && this.state.technical_level_valid})
     }
 
     errorClass(error) {
@@ -209,6 +228,14 @@ class FormContainer extends React.Component {
                   handleChange={this.handleTextArea}/> 
                   <br/>
                   <br/>
+                <Checkbox title={'Selecione seu nível de habilidade técnica:'}
+                  name={'technical_level'}
+                  options={this.state.technical_level_options}
+                  selectedOptions = {this.state.participant.technical_level}
+                  value = {this.state.participant.technical_level}
+                  handleChange={this.handleCheckBoxTechnicalLevel}/>  
+                  <br/>
+                  <br/>  
                 <Col sm={{ span: 10, offset: 5 }}>
                     <Button color="#C0B283" disabled={!this.state.formValid} onClick={() => this.redirect()}> 
                          <span className="text-white"> Próxima Etapa </span>       
