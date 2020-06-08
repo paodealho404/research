@@ -62,7 +62,7 @@ class Thanks extends React.Component {
         return(
             <div>
                 <Header/>
-                <center>
+                <center className="col" style={{height: '585px', flexDirection: 'column', justifyContent: 'center', display: 'flex'}}>
                     <p style={{color: "#000000", fontSize: '22px'}}>Este é o final da pesquisa. Muito obrigado pela colaboração!</p>
                     {this.state.redirect ? (<Redirect to={{ pathname:"/"}}/>) : <div></div>}
                 </center>

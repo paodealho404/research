@@ -217,6 +217,14 @@ class FormContainer extends React.Component {
                   handleChange={this.handleCheckBoxGender}/>  
                   <br/>
                   <br/>
+                <Checkbox title={'Selecione seu nível de habilidade técnica:'}
+                  name={'technical_level'}
+                  options={this.state.technical_level_options}
+                  selectedOptions = {this.state.participant.technical_level}
+                  value = {this.state.participant.technical_level}
+                  handleChange={this.handleCheckBoxTechnicalLevel}/>  
+                  <br/>
+                  <br/>  
                 <TextArea 
                   title={'Informe qual nível educacional você leciona:'}
                   rows={1}
@@ -237,14 +245,6 @@ class FormContainer extends React.Component {
                   handleChange={this.handleTextArea}/> 
                   <br/>
                   <br/>
-                <Checkbox title={'Selecione seu nível de habilidade técnica:'}
-                  name={'technical_level'}
-                  options={this.state.technical_level_options}
-                  selectedOptions = {this.state.participant.technical_level}
-                  value = {this.state.participant.technical_level}
-                  handleChange={this.handleCheckBoxTechnicalLevel}/>  
-                  <br/>
-                  <br/>  
                 <Col sm={{ span: 10, offset: 5 }}>
                     <Button color="#C0B283" disabled={!this.state.formValid} onClick={() => this.redirect()}> 
                          <span className="text-white"> Próxima Etapa </span>       
