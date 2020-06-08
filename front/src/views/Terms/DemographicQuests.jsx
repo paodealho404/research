@@ -29,6 +29,7 @@ class FormContainer extends React.Component {
             technical_level: '',
             dashboard_sequence: null
           },
+          accepted: true,
           component: '',
           failed: false,
           redirect: false,
@@ -50,6 +51,7 @@ class FormContainer extends React.Component {
         this.handleCheckBoxTechnicalLevel = this.handleCheckBoxTechnicalLevel.bind(this);
         this.handleCheckBoxEducacationalLevel = this.handleCheckBoxEducacationalLevel.bind(this);
     }
+
     handleCheckBoxTechnicalLevel(e)
     {
       const value = e.target.value;
@@ -94,7 +96,6 @@ class FormContainer extends React.Component {
         }
         }), ()=>{ this.validateField(name, value) });
     }
-
     validateField(fieldName, value) {
       let fieldValidationErrors = this.state.formErrors;
       //let nameValid = this.state.nameValid;
@@ -145,6 +146,14 @@ class FormContainer extends React.Component {
     errorClass(error) {
       return(error.length === 0 ? '' : 'has-error');
     }
+    componentDidMount()
+    {
+      if(!sessionStorage.getItem('accepted'))
+      {
+        this.setState({accepted: false})
+      }
+    }
+    
     redirect()
     {
       axios.get(baseUrl+'/getParticipants')
@@ -156,12 +165,12 @@ class FormContainer extends React.Component {
           this.setState(prevState => ({
             participant: {
               ...prevState.participant, id: participant_id, dashboard_sequence: perm
-            }, 
-            redirect: true, 
+            },  
             failed: false
-            }));          
-          sessionStorage.setItem('participant', JSON.stringify(this.state.participant));   
-          console.log(sessionStorage.getItem('participant'));
+            }),()=>{
+              sessionStorage.setItem('participant', JSON.stringify(this.state.participant));
+              this.setState({redirect: true});
+            }); 
         })
       .catch(error=>
         {//Sujeito a melhoras
@@ -243,6 +252,7 @@ class FormContainer extends React.Component {
                 </Col>
             </Form>
             {this.state.redirect ? (<Redirect to={{ pathname:"/projecttutorial"}}/>) : (this.state.component)}
+            {this.state.accepted ? <div></div> : <Redirect to={{pathname: '/'}}/>}
             </Col>
         </div>)
     }

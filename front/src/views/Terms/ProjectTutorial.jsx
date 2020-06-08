@@ -17,12 +17,19 @@ class ProjectTutorial extends React.Component{
     {
         super(props);
         this.state = {
-            redirect: false
+            redirect: false,
+            accepted: true
         }
         this.redirect = this.redirect.bind(this);
         this._onReady = this._onReady.bind(this);
     }
-
+    componentDidMount()
+    {
+      if(!sessionStorage.getItem('accepted') || !sessionStorage.getItem('participant'))
+      {
+        this.setState({accepted: false}, console.log('N'));
+      }
+    }
     redirect(){
         this.setState({redirect: true});
     }
@@ -62,6 +69,7 @@ class ProjectTutorial extends React.Component{
                     Visualizar Ferramenta
                 </Button>
                 {this.state.redirect ? (<Redirect to={{pathname:"/admin/classDashboard_" + participant_info.dashboard_sequence[0] + "/7/345/32"}}/>) : (<div></div>)}
+                {this.state.accepted ? <div></div> : <Redirect to={{pathname: '/'}}/>}
             </center>
             <br/>
             </Col>

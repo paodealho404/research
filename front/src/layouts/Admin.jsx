@@ -1,7 +1,7 @@
 import React from "react";
 // javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import DemoNavbar from "components/Navbars/DemoNavbar.jsx";
 import Sidebar from "components/Sidebar/Sidebar.jsx";
@@ -17,7 +17,8 @@ class Dashboard extends React.Component {
     super(props);
     this.state = {
       backgroundColor: "black",
-      activeColor: "info"
+      activeColor: "info",
+      accepted: true
     };
     this.mainPanel = React.createRef();
   }
@@ -26,6 +27,17 @@ class Dashboard extends React.Component {
       ps = new PerfectScrollbar(this.mainPanel.current);
       document.body.classList.toggle("perfect-scrollbar-on");
     }
+    // if(!sessionStorage.getItem('accepted') || !sessionStorage.getItem('participant'))
+    // {
+    //   this.setState({accepted: false})
+    // }
+  }
+  componentWillMount()
+  {
+    if(!sessionStorage.getItem('accepted') || !sessionStorage.getItem('participant'))
+      {
+        this.setState({accepted: false});
+      }
   }
   componentWillUnmount() {
     if (navigator.platform.indexOf("Win") > -1) {
@@ -46,30 +58,35 @@ class Dashboard extends React.Component {
     this.setState({ backgroundColor: color });
   };
   render() {
-    return (
-      <div className="wrapper">
-        <Sidebar
-          {...this.props}
-          bgColor={this.state.backgroundColor}
-          activeColor={this.state.activeColor}
-        />
-        <div className="main-panel" ref={this.mainPanel}>
-          <DemoNavbar {...this.props} />
-          <Switch>
-            {routes.map((prop, key) => {
-              return (
-                <Route
-                  path={prop.layout + prop.path}
-                  component={prop.component}
-                  key={key}
-                />
-              );
-            })}
-          </Switch>    
-        </div> 
-      </div>
-    );
+   
+      return (
+        this.state.accepted ? (
+          <div className="wrapper">
+          <Sidebar
+            {...this.props}
+            bgColor={this.state.backgroundColor}
+            activeColor={this.state.activeColor}
+          />
+          <div className="main-panel" ref={this.mainPanel}>
+            <DemoNavbar {...this.props} />
+            <Switch>
+              {routes.map((prop, key) => {
+                return (
+                  <Route
+                    path={prop.layout + prop.path}
+                    component={prop.component}
+                    key={key}
+                  />
+                );
+              })}
+            </Switch>    
+          </div> 
+          
+        </div>
+        ) : <Redirect to={{pathname: '/'}}/>        
+      );
   }
 }
+
 
 export default Dashboard;

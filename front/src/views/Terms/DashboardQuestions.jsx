@@ -34,6 +34,7 @@ class DashboardQuestions extends React.Component {
                 openQuestion2: '',
                 survey_type: null
             },
+            accepted: true,
             formErrors: { 
                 q1: '',
                 q2: '',
@@ -51,17 +52,18 @@ class DashboardQuestions extends React.Component {
         this.redirect = this.redirect.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }  
-
+    componentWillMount()
+    {
+      if(!sessionStorage.getItem('accepted') || !sessionStorage.getItem('participant'))
+      {
+        this.setState({accepted: false});
+      }
+    }
     redirect(){
         let participant_info = JSON.parse(sessionStorage.getItem('participant'));
 
         let survey_type = parseInt(this.props.location.state.DashboardID);
         let surveyName = 'survey' + survey_type; 
-
-        console.log(participant_info);
-        console.log(survey_type);
-        console.log(surveyName);
-
         this.setState(prevState => ({ questionAnswers: {...prevState.questionAnswers, participant_id: participant_info.id, survey_type: survey_type}}), () => {
             sessionStorage.setItem(surveyName, JSON.stringify(this.state.questionAnswers));
             
@@ -245,13 +247,13 @@ class DashboardQuestions extends React.Component {
                     <Button color="#C0B283" disabled={!this.state.formValid} onClick={() => this.redirect()}> 
                         <span className="text-white">Submeter</span>       
                     </Button>
-                    {participant_info.dashboard_sequence.length > 0 ? (
-                        <div>
+                    
+                    {this.state.accepted ? 
+                    (<div> {participant_info.dashboard_sequence.length > 0 ? 
+                        (<div>
                             {this.state.redirect ? (<Redirect to={{pathname:"/admin/classDashboard_" + participant_info.dashboard_sequence[0] + "/" + classroomId + "/" + teacherId + "/" + courseId}}/>) : (<div></div>)}
-                        </div>
-                    ) : (
-                        <Redirect to={{pathname:"/thanks"}}/>
-                    )}
+                        </div>) : ( <Redirect to={{pathname:"/thanks"}}/>)}
+                    </div>) : (<Redirect to={{pathname: '/'}}/>)}
                 </Col>
             </Form>
               </div>          

@@ -30,7 +30,10 @@ class StarterTerm extends React.Component {
             checkValid : !prevState.checkValid
         }));
     }
-
+    accept()
+    {
+        sessionStorage.setItem('accepted', true);
+    }
     render () {
         return(
             <div>
@@ -97,7 +100,7 @@ class StarterTerm extends React.Component {
                     </Button>
                     </center>
                   :
-                    <Link className="text-dark" to={{pathname:"/demographicquest"}} >
+                    <Link className="text-dark" to={{pathname:"/demographicquest"}} onClick = {this.accept}>
                         <center>
                         <Button color ="#C0B283" type="submit"> 
                             Continuar

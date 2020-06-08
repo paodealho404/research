@@ -19,7 +19,7 @@ class Thanks extends React.Component {
     }
 
     componentDidMount() {
-        if(sessionStorage.getItem('participant') !== null && sessionStorage.getItem('survey1') !== null && sessionStorage.getItem('survey2') !== null && sessionStorage.getItem('survey3') !== null) {
+        if(sessionStorage.getItem('accepted')&&sessionStorage.getItem('participant')&&sessionStorage.getItem('survey1')&&sessionStorage.getItem('survey2')&&sessionStorage.getItem('survey3')) {
             let participant = JSON.parse(sessionStorage.getItem('participant'));
 
             axios.post(baseUrl + '/createParticipant', participant)
