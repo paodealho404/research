@@ -69,7 +69,10 @@ class DashboardQuestions extends React.Component {
             
             this.setState({redirect: true});
 
-            participant_info.dashboard_sequence.shift();
+            const index = participant_info.dashboard_sequence.indexOf(survey_type);
+            if (index > -1) {
+                participant_info.dashboard_sequence.splice(index, 1);
+            }
 
             sessionStorage.setItem('participant', JSON.stringify(participant_info));
         });
@@ -143,10 +146,6 @@ class DashboardQuestions extends React.Component {
     render()
     {
         let participant_info = JSON.parse(sessionStorage.getItem('participant'));
-
-        let classroomId = parseInt(sessionStorage.getItem('classroomId'));
-        let teacherId = parseInt(sessionStorage.getItem('teacherId'));
-        let courseId = parseInt(sessionStorage.getItem('courseId'));
         return(
             this.state.accepted ? (
                 <div>
