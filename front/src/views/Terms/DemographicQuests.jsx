@@ -259,7 +259,7 @@ class FormContainer extends React.Component {
                                 </Button>
                             </Col>
                         </Form>
-                        {this.state.redirect ? (<Redirect to={{ pathname: "/projecttutorial" }} />) : (this.state.component)}
+                        {this.state.redirect ? (<Redirect push to={{ pathname: "/projecttutorial" }} />) : (this.state.component)}
                     </Col>
                 </div>
             ) : (
