@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var port = process.env.PORT || 4000
 const ENV = process.env.NODE_ENV;
+const path = require('path');
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -12,6 +13,7 @@ app.use(
     extended: false
   })
 );
+
 if(ENV === 'production')
 {
   app.use(express.static(path.join(__dirname,'../front/build')));
