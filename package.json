@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "cd back && npm install && node server.js",
-    "heroku-postBuild": "cd ../front && npm install && npm run build"
+    "heroku-postBuild": "cd ../front && npm install && npm start"
   },
   "keywords": [],
   "author": "",
