@@ -4,8 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "heroku-postBuild": "cd front && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
