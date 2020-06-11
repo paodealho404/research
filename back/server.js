@@ -16,7 +16,7 @@ app.use(
 
 if(ENV === 'production')
 {
-  app.use(express.static(path.join(__dirname,'../build')));
+  app.use(express.static(path.join(__dirname,'../front/build')));
   app.use((req,res)=>{
     res.sendFile(path.join(__dirname, '../front/build/index.html'));
   })
