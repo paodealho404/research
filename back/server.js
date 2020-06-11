@@ -16,9 +16,9 @@ app.use(
 
 if(ENV === 'production')
 {
-  app.use(express.static(path.join(__dirname,'../front/build')));
+  app.use(express.static(path.join(__dirname,'../front/public')));
   app.use((req,res)=>{
-    res.sendFile(path.join(__dirname, '../front/build/index.html'));
+    res.sendFile(path.join(__dirname, '../front/public/src/index.html'));
   })
 }
 const Users = require('./routes/Users');
