@@ -14,7 +14,7 @@ import TextArea from "./components/TextArea";
 import Header from "./components/Header";
 import axios from 'axios';
 
-const baseUrl = process.env.REACT_APP_API_URL || "http://localhost:4000/course";
+const baseUrl = (process.env.REACT_APP_API_URL+'/course') || "http://localhost:4000/course";
 
 class FormContainer extends React.Component {
     constructor(props) {
@@ -180,6 +180,7 @@ class FormContainer extends React.Component {
                 });
             })
             .catch(error => {//Sujeito a melhoras
+                console.log(baseUrl);
                 this.setState({
                     failed: true
                 });
