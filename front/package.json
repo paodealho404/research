@@ -24,7 +24,7 @@
     "react-chartjs-2": "^2.8.0",
     "react-dom": "^16.8.6",
     "react-google-maps": "^9.4.5",
-    "react-native": "^0.61.5",
+    "react-native": "^0.62.3",
     "react-notification-alert": "0.0.12",
     "react-perfect-scrollbar": "^1.5.3",
     "react-router": "5.0.0",
